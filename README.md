@@ -2,33 +2,18 @@
 
 <a name="readme-top"></a>
 
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
-
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
   <a href="https://github.com/github_username/repo_name">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="https://i.imgur.com/kXVg1nL.png" alt="Logo" width="100" height="100">
   </a>
 
 <h3 align="center">FEC Capstone</h3>
 
   <p align="center">
-    project_description
     <br />
-    <a href="https://github.com/github_username/repo_name"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    <a href="https://github.com/github_username/repo_name">View Demo</a>
-    ·
-    <a href="https://github.com/github_username/repo_name/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/github_username/repo_name/issues">Request Feature</a>
+    <a href="https://khurramali.site/fec/"><strong>View Demo »</strong></a>
   </p>
 </div>
 
@@ -42,17 +27,17 @@
         <li><a href="#built-with">Built With</a></li>
       </ul>
     </li>
+    <li><a href="#requirements">Requirements</a></li>
     <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
+    <a href="#roadmap">Roadmap</a>
+    <ul>
+    <li><a href="#overview">Overview</a></li>
+      <li><a href="#related-products">Related Products</a></li>
+      <li><a href="#questions-and-answers">Questions and Answers</a></li>
+      <li><a href="#reviews-and-ratings">Reviews and Ratings</a></li>
+    </ul>
     </li>
-    <li><a href="#Overview">Overview</a></li>
-    <li><a href="#Ratings and Reviews">Roadmap</a></li>
-    <li><a href="#Questions and Answers">Contributing</a></li>
-    <li><a href="#Related">License</a></li>
+    <li><a href="#authors">Authors</a></li>
   </ol>
 </details>
 
@@ -60,45 +45,27 @@
 
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
-
-Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `github_username`, `repo_name`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `project_title`, `project_description`
+Liquid Death is a front-end application that models a product page for an eCommerce
+website using React. It prominently features an overview section,
+related products, user-generated questions and answers, and customer
+reviews.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### Built With
 
-- [![Typescript][typescript.js]][Typescript-url]
-- [![React][React.js]][React-url]
-- [![Axios][Axios.js]][Axios-url]
-- [![Tailwind][Tailwind.css]][Tailwind-url]
-- [![Express][Express.dev]][Express-url]
-- [![Jest][Jest.dev]][Jest-url]
+- ![Typescript][typescript.js]
+- ![React][React.js]
+- ![Axios][Axios.js]
+- ![Tailwind][Tailwind]
+- ![Express][Express]
+- ![Jest][Jest]
+- ![CSS 3][CSS]
+- ![HTML 5][HTML]
+- ![Javascript][javascript.js]
+- ![Node.JS][node.js]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- GETTING STARTED -->
-
-## Getting Started
-
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
-
-### Prerequisites
-
-Follow these steps to set up the FEC Capstone project on your local machine:
-
-1. Clone the repository:
-
-   ```
-   git clone https://github.com/LiquidDeath2023/front-end-capstone.git
-   ```
-
-2. Install the project dependencies:
-
-   ```bash
-   npm install
-   ```
 
 ### Requirements
 
@@ -121,27 +88,19 @@ Follow these steps to set up the FEC Capstone project on your local machine:
    API_URI = "ENTER YOUR ATELIER API KEY";
    CHATGPT_URI = "ENTER YOUR CHATGPT API KEY";
    ```
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- USAGE EXAMPLES -->
-
-## Usage
-
-It's a website, come on.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+   <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- ROADMAP -->
 
 ## Roadmap
 
-- [ Overview ] Feature 1
-- [ Related] Feature 2
-- [ Q&A ] Feature 3
-- [ Ratings and Reviews] Feature 4
-
-See the [open issues](https://github.com/github_username/repo_name/issues) for a full list of proposed features (and known issues).
+- [ ] App
+  - [ ] Overview
+  - [ ] Related Products
+  - [ ] Questions and Answers
+  - [ ] Reviews and Ratings
+- [ ] Server
+  - [ ] Routing
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -155,13 +114,13 @@ The image gallery is your central hub for getting a good look at the product. In
 
 The product information is contained on the right side of the screen. This section outlines the name, category, price, and average review. The description and slogan are placed below the image gallery.
 
-The Style selector enables users to choose different variations or styles of the product.
+The style selector enables users to maneuver between different styles.
 
-Lastly, the Add to cart area provides an area to select a size and quantity, along with a button that allows customers to easily add the product to their shopping cart.
+The add to cart feature allows the user to select a product-specific size and quantity and then add that item to their cart.
 
 <!-- related-->
 
-## Usage
+## Related Products
 
  <ul>
   <li>Related</li>
@@ -254,56 +213,25 @@ The questions and answers section is updated based on the product id receieved f
 
 <!-- ACKNOWLEDGMENTS -->
 
-## Acknowledgments
+## Authors
 
-- []()
-- []()
-- []()
+- [Ben](https://github.com/CeruleanBean)
+- [Jon](https://github.com/jonwill08)
+- [Khurram](https://github.com/destocot)
+- [Kurt](https://github.com/kurtvardeman)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
-<!-- # Website Name
-
-Welcome to the repository of the Website Name! This website is designed to provide users with an interactive experience through its four major components: Questions and Answers, Related, Overview, and Ratings and Reviews.
-
-## Table of Contents
--  [Introduction](#introduction)
--  [Components](#components)
--  [Installation](#installation)
--  [Usage](#usage)
--  [Contributing](#contributing)
--  [License](#license)
-
-## Introduction
-Give a brief introduction to the website and its purpose. Explain what sets it apart and why users would find it valuable.
-
-## Components
-### 1. Questions and Answers
-Describe the Questions and Answers component and its functionality. Explain how users can post questions and receive answers from the community or experts.
-
-### 2. Related
-Explain what the Related component is used for. Describe how it provides related content or suggestions based on the user's current selection or browsing history.
-
-### 3. Overview
-Give an overview of the Overview component. Explain its purpose and how it provides a summary or general information about a specific topic or category.
-
-### 4. Ratings and Reviews
-Describe the functionality and importance of the Ratings and Reviews component. Explain how users can rate and provide feedback on products, services, or any other relevant items.
-
-## Installation
-Provide step-by-step instructions on how to install and set up the website locally. Include any necessary dependencies or prerequisites.
-
-## Usage
-Explain how users can navigate and interact with the website. Provide examples or screenshots if applicable. Include any specific instructions or guidelines for each component.
-
-## Contributing
-Encourage users and developers to contribute to the project. Outline the guidelines for submitting bug reports, feature requests, or pull requests. Provide information on how to set up the development environment and run tests.
-
-## License
-Specify the license under which the website is distributed. Include any necessary disclaimers or acknowledgments.
-
-Feel free to customize and expand upon this README file to best fit your project's needs. Good luck with your website!
--->
+[Typescript.js]: https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white
+[React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
+[Axios.js]: https://img.shields.io/badge/Axios-20232A?style=for-the-badge&logo=axios&logoColor=white
+[Tailwind]: https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white
+[Express]: https://img.shields.io/badge/Express.js-404D59?style=for-the-badge
+[Jest]: https://img.shields.io/badge/Jest-323330?style=for-the-badge&logo=Jest&logoColor=white
+[CSS]: https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white
+[HTML]: https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white
+[Javascript.js]: https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black
+[Node.JS]: https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white
