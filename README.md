@@ -118,7 +118,7 @@ The style selector enables users to maneuver between different styles.
 
 The add to cart feature allows the user to select a product-specific size and quantity and then add that item to their cart.
 
-<video src="https://i.imgur.com/oH8XUAf.mp4" controls alt="Logo" width="50%" height="20%" />
+<video src="https://i.imgur.com/oH8XUAf.mp4" controls alt="Logo" width="50%" height="20%"></video>
 
 <!-- related-->
 
@@ -192,7 +192,7 @@ The questions and answers section is updated based on the product id receieved f
 <div>
   <div>Component Hierarchy:</div>
   <img src="https://mermaid.ink/img/pako:eNp9kMGKwkAMhl-l5OSCfYEeFmy7XYU9iHrreAidaAc7E0mnW0R8dzvuID1tTsn_fSSQOzSsCTI4dTw2LYpPDqVyyVSreke_hsY-3aE37twfkzT9zBd_Uy6EF82j-_jPLhYx_TG9j2YeQFm_FxRsr8cZ-qq3wnpo_NuItAi0incOpqN5_l3vWcLheZiso12x2AiqADazLTnr24vBEiyJRaOnf9xDosC3ZElBNrUa5aJAucfk4eB5f3MNZF4GWsJw1eipNHgWtJCdsOvp8QR7JHB9?type=png">
-  <video src="https://i.imgur.com/alT7yE4.mp4" controls type="video/mp4" />
+  <video src="https://i.imgur.com/alT7yE4.mp4" controls type="video/mp4" ></video>  
   <ul>
     <span>Rating Breakdown</span>
     <ul>
@@ -210,7 +210,7 @@ The questions and answers section is updated based on the product id receieved f
       <li>Sourced from reviews data</li>
       <li>Expands with more reviews button</li>
       <li>Submit new form with Add Review button</li>
-      <src="https://i.imgur.com/HwXyMle.png">
+      <img src="https://i.imgur.com/HwXyMle.png">
     </ul>
   </li>
 </ul>
