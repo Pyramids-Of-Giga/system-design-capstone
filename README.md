@@ -117,7 +117,7 @@ The product information is contained on the right side of the screen. This secti
 The style selector enables users to maneuver between different styles.
 
 The add to cart feature allows the user to select a product-specific size and quantity and then add that item to their cart.
- 
+ <iframe src="https://giphy.com/embed/CvTNjgzLTxsZWKBdCo" width="480" height="206" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/CvTNjgzLTxsZWKBdCo">via GIPHY</a></p>
 <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExeThkaWtpbGJqczY2a2dkaThyZndob3R0YjQyYWd0M3JndzNqb211ZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/CvTNjgzLTxsZWKBdCo/giphy.gif" width="100" height="100">
 
 <!-- related-->
