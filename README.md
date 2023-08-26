@@ -192,7 +192,7 @@ The questions and answers section is updated based on the product id receieved f
 <div>
   <div>Component Hierarchy:</div>
   <img src="https://mermaid.ink/img/pako:eNp9kMGKwkAMhl-l5OSCfYEeFmy7XYU9iHrreAidaAc7E0mnW0R8dzvuID1tTsn_fSSQOzSsCTI4dTw2LYpPDqVyyVSreke_hsY-3aE37twfkzT9zBd_Uy6EF82j-_jPLhYx_TG9j2YeQFm_FxRsr8cZ-qq3wnpo_NuItAi0incOpqN5_l3vWcLheZiso12x2AiqADazLTnr24vBEiyJRaOnf9xDosC3ZElBNrUa5aJAucfk4eB5f3MNZF4GWsJw1eipNHgWtJCdsOvp8QR7JHB9?type=png" />
-  <video src="https://i.imgur.com/alT7yE4.mp4" controls type="video/mp4"></video>
+  <img src="https://i.imgur.com/dTvCFW8.gif" width="50%" height="20%"></video>
   <ul>
     <span>Rating Breakdown</span>
       <img src="https://i.imgur.com/mMRE1bw.png" width="25%" height="20%">
