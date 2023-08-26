@@ -160,7 +160,7 @@ The questions and answers section is updated based on the product id receieved f
    <span>Search</span>
      <p align="center">
     <br />
-    <img src="https://i.imgur.com/RwngAvu.gif" alt="Logo" width="300" height="75">
+    <img src="https://i.imgur.com/RwngAvu.gif" alt="Logo" width="600" height="150">
   </p>
     <ul>
       <li>Keeps track of search queries that is sent to the questions and answers compoent</li>
@@ -174,7 +174,7 @@ The questions and answers section is updated based on the product id receieved f
       <li>Highlighting feature based on search queries</li>
       <li>Image uploads supported</li>
       <li>Add Answers, creates a pop-up form that sends a post request to the api</li>
-      <img src="https://i.imgur.com/AJ1eXFM.gif" alt="Logo" width="300" height="150">
+      <img src="https://i.imgur.com/AJ1eXFM.gif" alt="Logo" width="600" height="300">
     </ul>
   </li>
   <li>
