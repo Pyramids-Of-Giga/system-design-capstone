@@ -195,7 +195,7 @@ The questions and answers section is updated based on the product id receieved f
   <video src="https://i.imgur.com/alT7yE4.mp4" controls type="video/mp4"></video>
   <ul>
     <span>Rating Breakdown</span>
-      <img src="https://i.imgur.com/mMRE1bw.png" width="50%" height="20%">
+      <img src="https://i.imgur.com/mMRE1bw.png" width="25%" height="20%">
     <ul>
       <li>Utilizes reviews_meta data</li>
       <li>Calculates average rating and associated stars</li>
