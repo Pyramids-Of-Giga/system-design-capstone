@@ -153,9 +153,12 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 
 The questions and answers section is updated based on the product id receieved from the api upon initial load and product selection. Features included displaying, adding, and searching questions and answers.
 
+
+
  <ul>
   <li>
    <span>Search</span>
+    <img src="https://i.imgur.com/RwngAvu.gif" alt="Logo" width="150" height="75">
     <ul>
       <li>Keeps track of search queries that is sent to the questions and answers compoent</li>
     </ul>
@@ -168,6 +171,7 @@ The questions and answers section is updated based on the product id receieved f
       <li>Highlighting feature based on search queries</li>
       <li>Image uploads supported</li>
       <li>Add Answers, creates a pop-up form that sends a post request to the api</li>
+      <img src="https://i.imgur.com/AJ1eXFM.gif" alt="Logo" width="150" height="150">
     </ul>
   </li>
   <li>
