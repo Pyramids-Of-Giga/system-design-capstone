@@ -100,20 +100,26 @@ Follow these steps to set up the FEC Capstone project on your local machine:
    npm install
    ```
 
-### Installation
+### Requirements
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+1. API key from
    ```sh
-   git clone https://github.com/github_username/repo_name.git
+   https://github.com/
    ```
-3. Install NPM packages
+2. API key frrom Atelier API
+3. API key from
+   ```sh
+   https://openai.com/
+   ```
+4. Install NPM packages
    ```sh
    npm install
    ```
-4. Enter your API in `config.js`
+5. Add your API keys in a `.env` file
    ```js
-   const API_KEY = "ENTER YOUR API";
+   AUTH = "ENTER YOUR GITHUB API KEY";
+   API_URI = "ENTER YOUR ATELIER API KEY";
+   CHATGPT_URI = "ENTER YOUR CHATGPT API KEY";
    ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -145,11 +151,11 @@ See the [open issues](https://github.com/github_username/repo_name/issues) for a
 
 The Overview section of the website displays information related to the product (pricing, name, category, etc.), a style selector, an form to add to your cart, and an image gallery for viewing styles.
 
-The image gallery is your central hub for
+The image gallery is your central hub for getting a good look at the product. In default view, there is an image carousel which is click and draggable. You can click the main image to zoom in to expanded view. Clicking again will zoom in further, allowing you to traverse the image by moving your mouse.
 
-The Product information segment presents essential details and specifications about the product, such as its name, price, description, and any other relevant information to help customers make informed purchasing decisions.
+The product information is contained on the right side of the screen. This section outlines the name, category, price, and average review. The description and slogan are placed below the image gallery.
 
-The Style selector enables users to choose different variations or styles of the product, such as color or size options, allowing them to customize their selection.
+The Style selector enables users to choose different variations or styles of the product.
 
 Lastly, the Add to cart area provides an area to select a size and quantity, along with a button that allows customers to easily add the product to their shopping cart.
 
@@ -214,50 +220,35 @@ The questions and answers section is updated based on the product id receieved f
   </li>
 </ul>
 
-_For more examples, please refer to the [Documentation](https://example.com)_
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- Ratings and Reviews -->
 
 ## Reviews and Ratings
 
-Component Layout:
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- CONTRIBUTING -->
-
-## Contributing
-
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
-Don't forget to give the project a star! Thanks again!
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- LICENSE -->
-
-## License
-
-Distributed under the MIT License. See `LICENSE.txt` for more information.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- CONTACT -->
-
-## Contact
-
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email@email_client.com
-
-Project Link: [https://github.com/github_username/repo_name](https://github.com/github_username/repo_name)
+<div>
+  <div>Component Hierarchy:</div>
+  <img src="https://mermaid.ink/img/pako:eNp9kMGKwkAMhl-l5OSCfYEeFmy7XYU9iHrreAidaAc7E0mnW0R8dzvuID1tTsn_fSSQOzSsCTI4dTw2LYpPDqVyyVSreke_hsY-3aE37twfkzT9zBd_Uy6EF82j-_jPLhYx_TG9j2YeQFm_FxRsr8cZ-qq3wnpo_NuItAi0incOpqN5_l3vWcLheZiso12x2AiqADazLTnr24vBEiyJRaOnf9xDosC3ZElBNrUa5aJAucfk4eB5f3MNZF4GWsJw1eipNHgWtJCdsOvp8QR7JHB9?type=png">
+  <ul>
+    <span>Rating Breakdown</span>
+    <ul>
+      <li>Utilizes reviews_meta data</li>
+      <li>Calculates average rating and associated stars</li>
+      <li>Displays % of reviews recommended</li>
+      <li>Breaksdown % of reviews by star rating</li>
+      <li>Shows average characteristic value from reviews</li>
+    </ul>
+  </li>
+  <li>
+    <span>Reviews List</span>
+    <ul>
+      <li>Sourced from reviews data</li>
+      <li>Expands with more reviews button</li>
+      <li>Submit new form with Add Review button</li>
+    </ul>
+  </li>
+</ul>
+</div>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
