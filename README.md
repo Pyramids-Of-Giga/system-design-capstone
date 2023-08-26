@@ -71,7 +71,7 @@ reviews.
 
 1. API key from
    ```sh
-   https://github.com/
+   https://github.com/settings/tokens
    ```
 2. API key frrom Atelier API
 3. API key from
@@ -142,8 +142,6 @@ The add to cart feature allows the user to select a product-specific size and qu
     </ul>
   </li>
   </ul>
-
-_For more examples, please refer to the [Documentation](https://example.com)_
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
