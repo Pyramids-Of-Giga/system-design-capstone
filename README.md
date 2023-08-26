@@ -2,23 +2,6 @@
 
 <a name="readme-top"></a>
 
-<!--
-*** Thanks for checking out the Best-README-Template. If you have a suggestion
-*** that would make this better, please fork the repo and create a pull request
-*** or simply open an issue with the tag "enhancement".
-*** Don't forget to give the project a star!
-*** Thanks again! Now go create something AMAZING! :D
--->
-
-<!-- PROJECT SHIELDS -->
-<!--
-*** I'm using markdown "reference style" links for readability.
-*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
-*** See the bottom of this document for the declaration of the reference variables
-*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
-*** https://www.markdownguide.org/basic-syntax/#reference-style-links
--->
-
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
@@ -33,7 +16,7 @@
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-<h3 align="center">project_title</h3>
+<h3 align="center">FEC Capstone</h3>
 
   <p align="center">
     project_description
@@ -66,12 +49,10 @@
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
+    <li><a href="#Overview">Overview</a></li>
+    <li><a href="#Ratings and Reviews">Roadmap</a></li>
+    <li><a href="#Questions and Answers">Contributing</a></li>
+    <li><a href="#Related">License</a></li>
   </ol>
 </details>
 
@@ -87,14 +68,12 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 
 ### Built With
 
-- [![Next][Next.js]][Next-url]
+- [![Typescript][typescript.js]][Typescript-url]
 - [![React][React.js]][React-url]
-- [![Vue][Vue.js]][Vue-url]
-- [![Angular][Angular.io]][Angular-url]
-- [![Svelte][Svelte.dev]][Svelte-url]
-- [![Laravel][Laravel.com]][Laravel-url]
-- [![Bootstrap][Bootstrap.com]][Bootstrap-url]
-- [![JQuery][JQuery.com]][JQuery-url]
+- [![Axios][Axios.js]][Axios-url]
+- [![Tailwind][Tailwind.css]][Tailwind-url]
+- [![Express][Express.dev]][Express-url]
+- [![Jest][Jest.dev]][Jest-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -107,12 +86,19 @@ To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
+Follow these steps to set up the FEC Capstone project on your local machine:
 
-- npm
-  ```sh
-  npm install npm@latest -g
-  ```
+1. Clone the repository:
+
+   ```
+   git clone https://github.com/LiquidDeath2023/front-end-capstone.git
+   ```
+
+2. Install the project dependencies:
+
+   ```bash
+   npm install
+   ```
 
 ### Installation
 
@@ -136,9 +122,7 @@ This is an example of how to list things you need to use the software and how to
 
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
+It's a website, come on.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -146,12 +130,99 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 
 ## Roadmap
 
-- [ ] Feature 1
-- [ ] Feature 2
-- [ ] Feature 3
-  - [ ] Nested Feature
+- [ Overview ] Feature 1
+- [ Related] Feature 2
+- [ Q&A ] Feature 3
+- [ Ratings and Reviews] Feature 4
 
 See the [open issues](https://github.com/github_username/repo_name/issues) for a full list of proposed features (and known issues).
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- Overview-->
+
+## Overview
+
+The Overview section of the website displays information related to the product (pricing, name, category, etc.), a style selector, an form to add to your cart, and an image gallery for viewing styles.
+
+The image gallery is your central hub for
+
+The Product information segment presents essential details and specifications about the product, such as its name, price, description, and any other relevant information to help customers make informed purchasing decisions.
+
+The Style selector enables users to choose different variations or styles of the product, such as color or size options, allowing them to customize their selection.
+
+Lastly, the Add to cart area provides an area to select a size and quantity, along with a button that allows customers to easily add the product to their shopping cart.
+
+<!-- related-->
+
+## Usage
+
+ <ul>
+  <li>Related</li>
+  <li>
+    <span>Related List</span>
+    <ul>
+      <li>Questions list rendered from a get request to the api</li>
+      <li>Answers list rendered from a get request to the api (is rerendered based on the questions list)</li>
+      <li>Highlighting feature based on search queries</li>
+      <li>Image uploads supported</li>
+      <li>Add Answers, creates a pop-</li>
+    </ul>
+  </li>
+  <li>
+    <span>Related Cards</span>
+    <ul>
+      <li>Expand questions, displays all questions and is contained in the screen</li>
+      <li>Add Questions, creates a pop-up form that sends a post request to the api </li>
+    </ul>
+  </li>
+  </ul>
+
+_For more examples, please refer to the [Documentation](https://example.com)_
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- Questions and Answers -->
+
+## Questions and Answers
+
+The questions and answers section is updated based on the product id receieved from the api upon initial load and product selection. Features included displaying, adding, and searching questions and answers.
+
+ <ul>
+  <li>
+   <span>Search</span>
+    <ul>
+      <li>Keeps track of search queries that is sent to the questions and answers compoent</li>
+    </ul>
+    </li>
+  <li>
+    <span>Questions and Answers</span>
+    <ul>
+      <li>Questions list rendered from a get request to the api</li>
+      <li>Answers list rendered from a get request to the api (is rerendered based on the questions list)</li>
+      <li>Highlighting feature based on search queries</li>
+      <li>Image uploads supported</li>
+      <li>Add Answers, creates a pop-up form that sends a post request to the api</li>
+    </ul>
+  </li>
+  <li>
+    <span>Expand and Add Questions</span>
+    <ul>
+      <li>Expand questions, displays all questions and is contained in the screen</li>
+      <li>Add Questions, creates a pop-up form that sends a post request to the api </li>
+    </ul>
+  </li>
+</ul>
+
+_For more examples, please refer to the [Documentation](https://example.com)_
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- Ratings and Reviews -->
+
+## Reviews and Ratings
+
+Component Layout:
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -203,32 +274,45 @@ Project Link: [https://github.com/github_username/repo_name](https://github.com/
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
-[contributors-shield]: https://img.shields.io/github/contributors/github_username/repo_name.svg?style=for-the-badge
-[contributors-url]: https://github.com/github_username/repo_name/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/github_username/repo_name.svg?style=for-the-badge
-[forks-url]: https://github.com/github_username/repo_name/network/members
-[stars-shield]: https://img.shields.io/github/stars/github_username/repo_name.svg?style=for-the-badge
-[stars-url]: https://github.com/github_username/repo_name/stargazers
-[issues-shield]: https://img.shields.io/github/issues/github_username/repo_name.svg?style=for-the-badge
-[issues-url]: https://github.com/github_username/repo_name/issues
-[license-shield]: https://img.shields.io/github/license/github_username/repo_name.svg?style=for-the-badge
-[license-url]: https://github.com/github_username/repo_name/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/linkedin_username
-[product-screenshot]: images/screenshot.png
-[Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
-[Next-url]: https://nextjs.org/
-[React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
-[React-url]: https://reactjs.org/
-[Vue.js]: https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vuedotjs&logoColor=4FC08D
-[Vue-url]: https://vuejs.org/
-[Angular.io]: https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white
-[Angular-url]: https://angular.io/
-[Svelte.dev]: https://img.shields.io/badge/Svelte-4A4A55?style=for-the-badge&logo=svelte&logoColor=FF3E00
-[Svelte-url]: https://svelte.dev/
-[Laravel.com]: https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white
-[Laravel-url]: https://laravel.com
-[Bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
-[Bootstrap-url]: https://getbootstrap.com
-[JQuery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
-[JQuery-url]: https://jquery.com
+<!-- # Website Name
+
+Welcome to the repository of the Website Name! This website is designed to provide users with an interactive experience through its four major components: Questions and Answers, Related, Overview, and Ratings and Reviews.
+
+## Table of Contents
+-  [Introduction](#introduction)
+-  [Components](#components)
+-  [Installation](#installation)
+-  [Usage](#usage)
+-  [Contributing](#contributing)
+-  [License](#license)
+
+## Introduction
+Give a brief introduction to the website and its purpose. Explain what sets it apart and why users would find it valuable.
+
+## Components
+### 1. Questions and Answers
+Describe the Questions and Answers component and its functionality. Explain how users can post questions and receive answers from the community or experts.
+
+### 2. Related
+Explain what the Related component is used for. Describe how it provides related content or suggestions based on the user's current selection or browsing history.
+
+### 3. Overview
+Give an overview of the Overview component. Explain its purpose and how it provides a summary or general information about a specific topic or category.
+
+### 4. Ratings and Reviews
+Describe the functionality and importance of the Ratings and Reviews component. Explain how users can rate and provide feedback on products, services, or any other relevant items.
+
+## Installation
+Provide step-by-step instructions on how to install and set up the website locally. Include any necessary dependencies or prerequisites.
+
+## Usage
+Explain how users can navigate and interact with the website. Provide examples or screenshots if applicable. Include any specific instructions or guidelines for each component.
+
+## Contributing
+Encourage users and developers to contribute to the project. Outline the guidelines for submitting bug reports, feature requests, or pull requests. Provide information on how to set up the development environment and run tests.
+
+## License
+Specify the license under which the website is distributed. Include any necessary disclaimers or acknowledgments.
+
+Feel free to customize and expand upon this README file to best fit your project's needs. Good luck with your website!
+-->
