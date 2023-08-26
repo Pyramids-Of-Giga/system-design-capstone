@@ -118,7 +118,8 @@ The style selector enables users to maneuver between different styles.
 
 The add to cart feature allows the user to select a product-specific size and quantity and then add that item to their cart.
 
-<img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExeThkaWtpbGJqczY2a2dkaThyZndob3R0YjQyYWd0M3JndzNqb211ZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/CvTNjgzLTxsZWKBdCo/giphy.gif" alt="Logo" width="50%" height="20%" >
+ 
+    <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExeThkaWtpbGJqczY2a2dkaThyZndob3R0YjQyYWd0M3JndzNqb211ZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/CvTNjgzLTxsZWKBdCo/giphy.gif" width="100" height="100">
 
 <!-- related-->
 
