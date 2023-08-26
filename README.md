@@ -195,7 +195,7 @@ The questions and answers section is updated based on the product id receieved f
   <video src="https://i.imgur.com/alT7yE4.mp4" controls type="video/mp4"></video>
   <ul>
     <span>Rating Breakdown</span>
-      <img src="https://i.imgur.com/mMRE1bw.png">
+      <img src="https://i.imgur.com/mMRE1bw.png" width="50%" height="20%">
     <ul>
       <li>Utilizes reviews_meta data</li>
       <li>Calculates average rating and associated stars</li>
@@ -211,10 +211,7 @@ The questions and answers section is updated based on the product id receieved f
       <li>Sourced from reviews data</li>
       <li>Expands with more reviews button</li>
       <li>Submit new form with Add Review button</li>
-<<<<<<< HEAD
-      <img src="https://i.imgur.com/HwXyMle.png">
-=======
->>>>>>> 4d80f90 (test)
+      <img src="https://i.imgur.com/HwXyMle.png" width="50%" height="20%">
     </ul>
   </li>
 </ul>
