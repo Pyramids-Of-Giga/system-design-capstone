@@ -206,7 +206,6 @@ The questions and answers section is updated based on the product id receieved f
   </li>
   <li>
     <span>Reviews List</span>
-      <img src="https://i.imgur.com/HwXyMle.png">
     <ul>
       <li>Sourced from reviews data</li>
       <li>Expands with more reviews button</li>
