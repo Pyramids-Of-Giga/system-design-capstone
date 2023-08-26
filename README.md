@@ -191,26 +191,30 @@ The questions and answers section is updated based on the product id receieved f
 
 <div>
   <div>Component Hierarchy:</div>
-  <img src="https://mermaid.ink/img/pako:eNp9kMGKwkAMhl-l5OSCfYEeFmy7XYU9iHrreAidaAc7E0mnW0R8dzvuID1tTsn_fSSQOzSsCTI4dTw2LYpPDqVyyVSreke_hsY-3aE37twfkzT9zBd_Uy6EF82j-_jPLhYx_TG9j2YeQFm_FxRsr8cZ-qq3wnpo_NuItAi0incOpqN5_l3vWcLheZiso12x2AiqADazLTnr24vBEiyJRaOnf9xDosC3ZElBNrUa5aJAucfk4eB5f3MNZF4GWsJw1eipNHgWtJCdsOvp8QR7JHB9?type=png">
-  <video src="https://i.imgur.com/alT7yE4.mp4" controls type="video/mp4" ></video>  
+  <img src="https://mermaid.ink/img/pako:eNp9kMGKwkAMhl-l5OSCfYEeFmy7XYU9iHrreAidaAc7E0mnW0R8dzvuID1tTsn_fSSQOzSsCTI4dTw2LYpPDqVyyVSreke_hsY-3aE37twfkzT9zBd_Uy6EF82j-_jPLhYx_TG9j2YeQFm_FxRsr8cZ-qq3wnpo_NuItAi0incOpqN5_l3vWcLheZiso12x2AiqADazLTnr24vBEiyJRaOnf9xDosC3ZElBNrUa5aJAucfk4eB5f3MNZF4GWsJw1eipNHgWtJCdsOvp8QR7JHB9?type=png" />
+  <video src="https://i.imgur.com/alT7yE4.mp4" controls type="video/mp4"></video>
   <ul>
     <span>Rating Breakdown</span>
+      <img src="https://i.imgur.com/mMRE1bw.png">
     <ul>
       <li>Utilizes reviews_meta data</li>
       <li>Calculates average rating and associated stars</li>
       <li>Displays % of reviews recommended</li>
       <li>Breaksdown % of reviews by star rating</li>
       <li>Shows average characteristic value from reviews</li>
-      <img src="https://i.imgur.com/mMRE1bw.png">
     </ul>
   </li>
   <li>
     <span>Reviews List</span>
+      <img src="https://i.imgur.com/HwXyMle.png">
     <ul>
       <li>Sourced from reviews data</li>
       <li>Expands with more reviews button</li>
       <li>Submit new form with Add Review button</li>
+<<<<<<< HEAD
       <img src="https://i.imgur.com/HwXyMle.png">
+=======
+>>>>>>> 4d80f90 (test)
     </ul>
   </li>
 </ul>
