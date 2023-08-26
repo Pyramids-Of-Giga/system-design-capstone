@@ -158,10 +158,10 @@ The questions and answers section is updated based on the product id receieved f
  <ul>
   <li>
    <span>Search</span>
-    <br />
-    <img src="https://i.imgur.com/RwngAvu.gif" alt="Logo" width="75%" height="20%">
     <ul>
       <li>Keeps track of search queries that is sent to the questions and answers compoent</li>
+      <br />
+      <img src="https://i.imgur.com/RwngAvu.gif" alt="Logo" width="75%" height="20%">
     </ul>
     </li>
   <li>
