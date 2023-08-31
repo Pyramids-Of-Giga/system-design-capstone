@@ -16,6 +16,7 @@ qaRouter.get("/questions", (req, res) => {
         .then((res) => res.rows.map((obj) => obj.id))
         .then((res) => queryDb(res, queryFuncObj.getAnswers))
         .then((res) => answers = res.rows)
+        .then(() => answers.map((obj) => formatTime(obj, 'date')))
         .then(() => answers.map((obj) => obj.id))
         .then((res) => queryDb(res, queryFuncObj.getAnswerPhotos))
         .then((res) => photos = res.rows)
@@ -24,6 +25,7 @@ qaRouter.get("/questions", (req, res) => {
       // get questions async
       const getQuestions = queryDb([1], queryFuncObj.getQuestions)
         .then((res) => questions = res.rows)
+        .then(() => questions.map((obj) => formatTime(obj, 'question_date')))
         .catch((err) => console.log('error getting questions from db'));
 
       Promise.all([getAnswers, getQuestions])
@@ -33,8 +35,10 @@ qaRouter.get("/questions", (req, res) => {
   }
 
   getParallelQueries()
-    .then(() => )
-    .then(() => res.status(200).send('placeholder'));
+    // .then(() => console.log({questions, answers, photos}))
+    .then(() => nestObj(answers, photos, 'id', 'answer_id', 'photos'))
+    .then((res) => nestObj(questions, res, 'question_id', 'question_id', 'answers'))
+    .then((data) => res.status(200).send(data));
 });
 
 module.exports = qaRouter;

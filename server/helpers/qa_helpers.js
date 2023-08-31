@@ -2,8 +2,10 @@ const { answers, photos, questions } = require("../../exampleData/qa_data");
 
 // console.log({ answers, photos, questions });
 
-const formatTime = (time_ms) => {
-  return new Date(Number(time_ms));
+const formatTime = (obj, property) => {
+  let newObj = obj;
+  newObj[property] = new Date(Number(obj[property]));
+  return newObj;
 }
 
 const nestObj = (parent, child, parentJoinKey, childJoinKey, childName) => {
@@ -11,7 +13,7 @@ const nestObj = (parent, child, parentJoinKey, childJoinKey, childName) => {
     return parent;
   }
 
-  if (Array.isArray(child)) {
+  if (childName === 'photos') {
     var storageFunc = (tempStore, childObj) => {
       tempStore.push(childObj);
     }
@@ -22,7 +24,7 @@ const nestObj = (parent, child, parentJoinKey, childJoinKey, childName) => {
   }
 
   for (var i = 0; i < parent.length; i++) {
-    let tempStore = Array.isArray(child) ? [] : {};
+    let tempStore = childName === 'photos' ? [] : {};
 
     for (var j = 0; j < child.length; j++) {
       let childObj = child[j];
@@ -38,6 +40,8 @@ const nestObj = (parent, child, parentJoinKey, childJoinKey, childName) => {
   return parent;
 }
 
+module.exports.nestObj = nestObj;
+module.exports.formatTime = formatTime;
 // nestObj(answers, photos, 'id', 'answer_id', 'photos');
 // nestObj(questions, answers, 'question_id', 'question_id', 'answers');
 // formatTime(questions[0].question_date);
