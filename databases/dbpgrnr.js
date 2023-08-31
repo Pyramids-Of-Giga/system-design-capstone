@@ -1,5 +1,5 @@
 const {Client} = require ('pg');
-const fs = require('fs');
+
 
 const client = new Client({
   host: 'localhost',

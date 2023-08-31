@@ -7,7 +7,7 @@
     "test": "jest",
     "start-client": "npx webpack --watch",
     "build": "NODE_ENV=production webpack",
-    "start-serv": "nodemon server.js",
+    "start-serv": "nodemon server/server.js",
     "test-verbose": "jest --verbose --coverage --coverageReporters='text-summary'"
   },
   "repository": {
@@ -37,6 +37,7 @@
     "jest-environment-jsdom": "^29.6.2",
     "multer": "^1.4.5-lts.1",
     "pg": "^8.11.3",
+    "pg-copy-streams": "^6.0.6",
     "postcss-loader": "^7.3.3",
     "postgresql": "^0.0.1",
     "react": "^18.2.0",
