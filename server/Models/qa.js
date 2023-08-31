@@ -2,22 +2,32 @@ const client = require("../../databases/qa_db");
 
 module.exports = {
   queryFuncObj: {
-    getQuestions: (productId) => {
-      return `SELECT id as question_id, question_body, question_date, asker_name, question_helpfulness, reported FROM questions WHERE product_id = ${productId} AND reported = false`
+    getQuestions: (productId, limit) => {
+      return `SELECT id as question_id, question_body, question_date, asker_name, question_helpfulness, reported FROM questions WHERE product_id in (${productId.join(',')}) AND reported = false LIMIT ${limit}`
     },
     getAnswers: (questionId) => {
-      return `SELECT * FROM answers WHERE question_id in (${questionId.join(',')}) AND reported = false`
+      return `SELECT id, question_id, body, date, answerer_name, helpfulness FROM answers WHERE question_id in (${questionId.join(',')}) AND reported = false`
+    },
+    getAnswerPhotos: (answerId) => {
+      return `SELECT * FROM photos WHERE answer_id in (${answerId.join(',')})`
     },
     getDistinctQuestionIds: (productId) => {
-      return `SELECT DISTINCT id FROM questions WHERE product_id = ${productId}`
+      return `SELECT DISTINCT id FROM questions WHERE product_id = (${productId.join(',')})`
     }
   },
 
   queryDb: (id, query) => {
-    client.query(`${query(id)}`)
-      .then((res) => console.log(res.rows))
+    return client.query(`${query(id)}`)
+      // .then((res) => console.log(res.rows))
       .catch((err) => console.log(err))
-      .finally(() => client.end());
+      // .finally(() => client.end());
+  },
+
+  queryQuestionsDb: (id, query, limit) => {
+    return client.query(`${query(id, limit)}`)
+      // .then((res) => console.log(res.rows))
+      .catch((err) => console.log(err))
+      // .finally(() => client.end());
   },
 
   // getDistinctQuestionIds: (productId) => {
