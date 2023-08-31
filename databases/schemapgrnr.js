@@ -3,6 +3,7 @@ const client = require('./dbpgrnr.js');
 function createSchemaAndTable() {
   const schemaName = 'rnr';
   const tableName = 'reviews';
+  const photoTableName = 'revpics';
 
   const createSchema = `CREATE SCHEMA IF NOT EXISTS ${schemaName}`;
   const createTable = `
@@ -21,6 +22,13 @@ function createSchemaAndTable() {
       helpfulness numeric (50)
     )
   `;
+  const createPhotoTable = `
+    CREATE TABLE IF NOT EXISTS ${schemaName}.${photoTableName} (
+      id serial PRIMARY KEY,
+      review_id INT REFERENCES ${schemaName}.${tableName}(id),
+      url varchar (500)
+    )
+  `;
 
   client.query(createSchema, (schemaErr) => {
     if (schemaErr) {
@@ -34,14 +42,22 @@ function createSchemaAndTable() {
     client.query(createTable, (tableErr) => {
       if (tableErr) {
         console.error('Error creating table:', tableErr);
-      } else {
-        console.log(`Table "${tableName}" created or already exists in schema "${schemaName}"`);
+        client.end();
+        return;
       }
 
-      client.end();
+      console.log(`Table "${tableName}" created or already exists in schema "${schemaName}"`);
+
+      client.query(createPhotoTable, (photoerror) => {
+        if (photoerror) {
+          console.error('Error creating photo table:', photoerror);
+        } else {
+          console.log('Photo table created');
+        }
+        client.end();
+      });
     });
   });
 }
 
-createSchemaAndTable ();
-
+createSchemaAndTable();
