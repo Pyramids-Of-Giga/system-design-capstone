@@ -3,12 +3,12 @@ const express = require("express");
 const app = express();
 const axios = require("axios");
 
-const serverdb = require('./databases/dbpgrnr.js');
+const serverdb = require('../databases/dbpgrnr.js');
 
 app.use(express.static(path.join(__dirname, "./client/dist")));
 app.use(express.json());
 
-const productRouter = require("./Routers/product_routers");
+const productRouter = require("./Routers/product_router");
 const reviewsRouter = require("./Routers/review_router");
 const qaRouter = require("./Routers/qa_router");
 
