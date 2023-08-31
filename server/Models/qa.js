@@ -15,7 +15,7 @@ module.exports = {
 
   queryDb: (id, query) => {
     client.query(`${query(id)}`)
-      .then((res) => console.log(res.rows))
+      // .then((res) => console.log(res.rows))
       .catch((err) => console.log(err))
       .finally(() => client.end());
   },
