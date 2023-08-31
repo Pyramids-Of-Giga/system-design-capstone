@@ -2,6 +2,7 @@ const express = require("express");
 const qaRouter = express.Router();
 const { queryFuncObj, queryDb } = require("../Models/qa");
 const client = require("../../databases/qa_db");
+const { formatTime, nestObj } = require("../helpers/qa_helpers");
 
 qaRouter.get("/questions", (req, res) => {
   // console.log('received request');
@@ -32,7 +33,7 @@ qaRouter.get("/questions", (req, res) => {
   }
 
   getParallelQueries()
-    .then(() => console.log({photos}))
+    .then(() => )
     .then(() => res.status(200).send('placeholder'));
 });
 

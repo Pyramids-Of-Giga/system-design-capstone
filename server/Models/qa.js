@@ -6,7 +6,7 @@ module.exports = {
       return `SELECT id as question_id, question_body, question_date, asker_name, question_helpfulness, reported FROM questions WHERE product_id in (${productId.join(',')}) AND reported = false`
     },
     getAnswers: (questionId) => {
-      return `SELECT * FROM answers WHERE question_id in (${questionId.join(',')}) AND reported = false`
+      return `SELECT id, question_id, body, date, answerer_name, helpfulness FROM answers WHERE question_id in (${questionId.join(',')}) AND reported = false`
     },
     getAnswerPhotos: (answerId) => {
       return `SELECT * FROM photos WHERE answer_id in (${answerId.join(',')})`
