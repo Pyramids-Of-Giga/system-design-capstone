@@ -7,7 +7,7 @@
     "test": "jest",
     "start-client": "npx webpack --watch",
     "build": "NODE_ENV=production webpack",
-    "start-serv": "nodemon server.js",
+    "start-serv": "nodemon server/server.js",
     "test-verbose": "jest --verbose --coverage --coverageReporters='text-summary'"
   },
   "repository": {
