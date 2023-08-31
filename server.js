@@ -2,12 +2,8 @@ const path = require("path");
 const express = require("express");
 const app = express();
 const axios = require("axios");
-<<<<<<< HEAD
-const serverdb = require('./databases/dbpgrnr.js');
-=======
-const client = require('./database/qa_postgres');
 
->>>>>>> 909d83a (trying to implement ETL)
+const serverdb = require('./databases/dbpgrnr.js');
 
 app.use(express.static(path.join(__dirname, "./client/dist")));
 app.use(express.json());

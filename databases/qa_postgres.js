@@ -10,10 +10,10 @@ const client = new Client({
 
 client.connect()
   .then(() => {
-    console.log('Connected to RnR PG')
+    console.log('Connected SDC_QuestionsAnswers')
   })
   .catch(err => {
-    console.log('Error connecting to RNR PG', err)
+    console.log('Error connecting to SDC_QuestionsAnswers', err)
   });
 
 module.exports = client;
