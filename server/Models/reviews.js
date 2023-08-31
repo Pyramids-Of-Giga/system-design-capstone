@@ -1,10 +1,20 @@
 const Reviews = require("../../databases/dbpgrnr.js");
 
 exports.getReviews = (productId, sort, count, offset) => {
+  let orderBy;
+
+  if (sort === 'newest') {
+    orderBy = 'date DESC';
+  } else if (sort === 'helpful') {
+    orderBy = 'helpfulness DESC';
+  } else {
+    orderBy = 'date DESC';
+  }
+
   const query = `
     SELECT * FROM rnr.reviews
     WHERE product_id = $1
-    ORDER BY ${sort}
+    ORDER BY ${orderBy}}
     LIMIT $2
     OFFSET $3;
   `;

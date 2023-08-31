@@ -12,7 +12,7 @@ reviewsRouter.get('/:product_id/:sort/:count/:page', (req, res) => {
 
   getReviews(product_id, sort || 'newest', numericCount, offset)
   .then((reviews) => {
-      res.status(200).send(reviews);
+      res.json(reviews.rows)
   })
   .catch((err) => {
       console.error(err);
