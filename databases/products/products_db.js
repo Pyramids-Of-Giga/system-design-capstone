@@ -9,6 +9,7 @@ const client = new Client({
   database: 'products'
 });
 
+// change this to false to seed the products database stored in /tmp
 var productsSeeded = true;
 
 client.connect()
