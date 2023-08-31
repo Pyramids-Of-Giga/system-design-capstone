@@ -1,21 +1,39 @@
 const express = require("express");
 const qaRouter = express.Router();
 const { queryFuncObj, queryDb } = require("../Models/qa");
+const client = require("../../databases/qa_db");
 
 qaRouter.get("/questions", (req, res) => {
   // console.log('received request');
+  let questions;
+  let answers;
+  let photos;
+  // Product ID => Question ID(s) => Answer ID(s) => Photos
+  let getParallelQueries = () => {
+    return new Promise((resolve, reject) => {
+      const getAnswers = queryDb([1], queryFuncObj.getDistinctQuestionIds)
+        .then((res) => res.rows.map((obj) => obj.id))
+        .then((res) => queryDb(res, queryFuncObj.getAnswers))
+        .then((res) => answers = res.rows)
+        .then(() => answers.map((obj) => obj.id))
+        .then((res) => queryDb(res, queryFuncObj.getAnswerPhotos))
+        .then((res) => photos = res.rows)
+        .catch((err) => console.log('error getting answers from db - ', err))
 
-  queryDb(1, queryFuncObj.getDistinctQuestionIds)
-    .then((res) => queryDb(res.rows, queryFuncObj.getAnswers))
-    .then((res) => console.log('answers: ', res.rows))
-    .catch((err) => console.log('error getting answers from db'))
+      // get questions async
+      const getQuestions = queryDb([1], queryFuncObj.getQuestions)
+        .then((res) => questions = res.rows)
+        .catch((err) => console.log('error getting questions from db'));
 
-  queryDb(1, queryFuncObj.getQuestions)
-    .then((res) => console.log('questions: ', res.rows))
-    .catch((err) => console.log('error getting questions from db'))
+      Promise.all([getAnswers, getQuestions])
+        .then(() => resolve(questions, answers, photos))
+        .catch((err) => reject(err));
+    });
+  }
 
-  // console.log({questions, answers});
-
+  getParallelQueries()
+    .then(() => console.log({photos}))
+    .then(() => res.status(200).send('placeholder'));
 });
 
 module.exports = qaRouter;
