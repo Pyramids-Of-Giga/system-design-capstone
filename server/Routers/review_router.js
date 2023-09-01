@@ -12,13 +12,57 @@ reviewsRouter.get('/:product_id/:sort/:count/:page', (req, res) => {
 
   getReviews(product_id, sort || 'newest', numericCount, offset)
   .then((reviews) => {
-      res.json(reviews.rows)
+      const rRows = reviews.rows;
+      const output = {
+        product: String(product_id),
+        page: numericPage,
+        count: numericCount,
+        results: reviews.rows.map(rev => {
+          var revdate = new Date(parseInt(rev.date));
+          return {
+            review_id: rev.review_id,
+            rating: parseInt(rev.rating),
+            summary: rev.summary,
+            response: rev.response,
+            body: rev.body,
+            date: revdate.toISOString(),
+            reviewer_name: rev.reviewer_name,
+            helpfulness: parseInt(rev.helpfulness),
+            photos: rev.photos[0].id ? rev.photos : []
+          }
+        })
+      }
+      res.json(output)
   })
   .catch((err) => {
       console.error(err);
       res.status(500).send('Error fetching reviews.');
   });
 });
+
+// reviewsRouter.get('/meta/:product_id', (req, res) => {
+//   const { product_id } = req.params;
+//   getMeta(product_id)
+//     .then((metaData) => {
+//       res.json(metaData)
+//   })
+//   .catch((err) => {
+//     console.error(err);
+//     res.status(500).send('Error fetching meta data');
+//   });
+// });
+
+//   axios.get(
+//     path.join(process.env.API_URI, 'reviews/meta'),
+//     {
+//       params: {
+//         product_id: req.params.product_id,
+//       },
+//     },
+//   )
+//     .then((reviewsMeta) => res.status(200).send(reviewsMeta.data))
+//     .catch((err) => res.status(400).send(err));
+// });
 
 module.exports = reviewsRouter;
 
