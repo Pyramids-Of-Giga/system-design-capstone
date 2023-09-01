@@ -5,8 +5,12 @@ module.exports = {
     getQuestions: (productId, limit = 5) => {
       return `SELECT id as question_id, question_body, question_date, asker_name, question_helpfulness, reported FROM questions WHERE product_id in (${productId.join(',')}) AND reported = false LIMIT ${limit};`
     },
-    getAnswers: (questionId, limit = 5) => {
-      return `SELECT id, question_id, body, date, answerer_name, helpfulness FROM answers WHERE question_id in (${questionId.join(',')}) AND reported = false LIMIT ${limit};`
+    getAnswers: (questionId, limit = null) => {
+      let limitClause = "";
+      if (limit !== null) {
+        limitClause = `LIMIT ${limit}`;
+      }
+      return `SELECT id, question_id, body, date, answerer_name, helpfulness FROM answers WHERE question_id in (${questionId.join(',')}) AND reported = false ${limitClause};`
     },
     getAnswerPhotos: (answerId) => {
       return `SELECT * FROM photos WHERE answer_id in (${answerId.join(',')});`
