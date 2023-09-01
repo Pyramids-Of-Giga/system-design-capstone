@@ -94,7 +94,7 @@ function App() {
           <Confetti width={windowSize.width} height={windowSize.height} />
         ) : null}
         <Navbar changeSearch={changeSearch} numInCart={numInCart} />
-        {/* <Overview
+        <Overview
           product={product}
           reviewsMeta={reviewsMeta}
           setConfetti={setConfetti}
@@ -109,7 +109,7 @@ function App() {
         <QuestionsAndAnswers
           currProductId={product.id}
           currProductName={product.name}
-        /> */}
+        />
         <ReviewsRatings
           reviewsMeta={reviewsMeta}
           currProductId={product.id}
