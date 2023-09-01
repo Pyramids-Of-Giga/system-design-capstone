@@ -40,17 +40,17 @@ reviewsRouter.get('/:product_id/:sort/:count/:page', (req, res) => {
   });
 });
 
-// reviewsRouter.get('/meta/:product_id', (req, res) => {
-//   const { product_id } = req.params;
-//   getMeta(product_id)
-//     .then((metaData) => {
-//       res.json(metaData)
-//   })
-//   .catch((err) => {
-//     console.error(err);
-//     res.status(500).send('Error fetching meta data');
-//   });
-// });
+reviewsRouter.get('/meta/:product_id', (req, res) => {
+  const { product_id } = req.params;
+  getMeta(product_id)
+    .then((metaData) => {
+      res.json(metaData)
+  })
+  .catch((err) => {
+    console.error(err);
+    res.status(500).send('Error fetching meta data');
+  });
+});
 
 //   axios.get(
 //     path.join(process.env.API_URI, 'reviews/meta'),
