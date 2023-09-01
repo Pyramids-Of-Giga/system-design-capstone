@@ -3,7 +3,7 @@ const { answers, photos, questions } = require("../../exampleData/qa_data");
 const filterArray = (array, page, count) => {
   const length = array.length;
   let start = (page * count) - count;
-  // console.log({length, start, page, count});
+  console.log({length, start, page, count});
   // need to test this thoroughly
 
   if (length < (page * count)) { // if we don't have enough results to do what user specified
@@ -13,7 +13,8 @@ const filterArray = (array, page, count) => {
       start = length - count - 1; // count backwards from end of array and return count
     }
   }
-
+  console.log(start)
+  console.log(array.slice(start).length);
   return array.slice(start);
 }
 

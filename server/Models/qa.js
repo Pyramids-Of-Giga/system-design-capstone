@@ -8,12 +8,15 @@ module.exports = {
     getAnswers: (questionId) => {
       return `SELECT id, question_id, body, date, answerer_name, helpfulness FROM answers WHERE question_id in (${questionId.join(',')}) AND reported = false`
     },
+    getAnswersOnly: (questionId, limit) => {
+      return `SELECT id, question_id, body, date, answerer_name, helpfulness FROM answers WHERE question_id in (${questionId.join(',')}) AND reported = false LIMIT ${limit}`
+    },
     getAnswerPhotos: (answerId) => {
       return `SELECT * FROM photos WHERE answer_id in (${answerId.join(',')})`
     },
     getDistinctQuestionIds: (productId) => {
       return `SELECT DISTINCT id FROM questions WHERE product_id = (${productId.join(',')})`
-    }
+    },
   },
 
   queryDb: (id, query) => {
@@ -23,7 +26,7 @@ module.exports = {
       // .finally(() => client.end());
   },
 
-  queryQuestionsDb: (id, query, limit) => {
+  queryDbLimit: (id, query, limit) => {
     return client.query(`${query(id, limit)}`)
       // .then((res) => console.log(res.rows))
       .catch((err) => console.log(err))

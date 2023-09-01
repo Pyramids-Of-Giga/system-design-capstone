@@ -1,6 +1,6 @@
 const express = require("express");
 const qaRouter = express.Router();
-const { queryFuncObj, queryDb, queryQuestionsDb } = require("../Models/qa");
+const { queryFuncObj, queryDb, queryDbLimit } = require("../Models/qa");
 const { formatTime, filterArray, nestObj } = require("../helpers/qa_helpers");
 
 qaRouter.get("/questions", (req, res) => {
@@ -24,11 +24,17 @@ qaRouter.get("/questions", (req, res) => {
         .then(() => answers.map((obj) => formatTime(obj, 'date')))
         .then(() => answers.map((obj) => obj.id))
         .then((data) => queryDb(data, queryFuncObj.getAnswerPhotos))
-        .then((data) => photos = data.rows)
+        .then((data) => {
+          if (data === undefined) {
+            photos = [];
+          } else {
+            photos = data.rows;
+          }
+        })
         .catch((err) => console.log('error getting answers from db - ', err))
 
       // get questions async
-      const getQuestions = queryQuestionsDb([productId], queryFuncObj.getQuestions, limit)
+      const getQuestions = queryDbLimit([productId], queryFuncObj.getQuestions, limit)
         .then((data) => questions = data.rows)
         .then(() => questions.map((obj) => formatTime(obj, 'question_date')))
         .catch((err) => console.log('error getting questions from db'));
@@ -56,5 +62,45 @@ qaRouter.get("/questions", (req, res) => {
     })
     .then((data) => res.status(200).send(data));
 });
+
+qaRouter.get("/questions/:question_id/answers", (req, res) => {
+  let { page = 1, count = 5} = req.query;
+  let { question_id } = req.params;
+  // is there a better way to convert from string to number? JSON.parse?
+  page = Number(page);
+  count = Number(count);
+  const limit = page * count;
+  let answers;
+  let photos;
+  // queryDbLimit([question_id], queryFuncObj.getAnswersOnly, limit)
+  queryDbLimit([question_id], queryFuncObj.getAnswersOnly, limit)
+    .then((data) => answers = data.rows)
+    .then(() => answers.map((obj) => formatTime(obj, 'date')))
+    .then(() => answers.map((obj) => obj.id))
+    .then((data) => queryDb(data, queryFuncObj.getAnswerPhotos))
+    .then((data) => {
+      if (data === undefined) {
+        photos = [];
+      } else {
+        photos = data.rows;
+      }
+    })
+    .then(() => nestObj(answers, photos, 'id', 'answer_id', 'photos'))
+    .then((data) => {
+      return filterArray(data, page, count)
+    })
+    .then((data) => {
+      return (
+        {
+          question: question_id.toString(),
+          page: page,
+          count: count,
+          results: data
+        }
+      )
+    })
+    .then((data) => res.status(200).send(data))
+    .catch((err) => console.log('error getting answers from db - ', err))
+})
 
 module.exports = qaRouter;
