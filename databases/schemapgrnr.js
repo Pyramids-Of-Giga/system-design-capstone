@@ -4,11 +4,13 @@ function createSchemaAndTable() {
   const schemaName = 'rnr';
   const tableName = 'reviews';
   const photoTableName = 'revpics';
+  const charTable = 'chars';
+  const revCharTable = 'revchars';
 
   const createSchema = `CREATE SCHEMA IF NOT EXISTS ${schemaName}`;
   const createTable = `
     CREATE TABLE IF NOT EXISTS ${schemaName}.${tableName} (
-      id serial PRIMARY KEY,
+      review_id serial PRIMARY KEY,
       product_id numeric(50) NOT NULL,
       rating numeric(50) NOT NULL,
       date varchar(50),
@@ -25,8 +27,25 @@ function createSchemaAndTable() {
   const createPhotoTable = `
     CREATE TABLE IF NOT EXISTS ${schemaName}.${photoTableName} (
       id serial PRIMARY KEY,
-      review_id INT REFERENCES ${schemaName}.${tableName}(id),
+      review_id INT REFERENCES ${schemaName}.${tableName}(review_id),
       url varchar (500)
+    )
+  `;
+
+  const createCharTable = `
+  CREATE TABLE IF NOT EXISTS ${schemaName}.${charTable} (
+    id serial PRIMARY KEY,
+    product_id INT,
+    name varchar (100)
+  )
+`;
+
+  const createRevCharTable = `
+    CREATE TABLE IF NOT EXISTS ${schemaName}.${revCharTable} (
+      id serial PRIMARY KEY,
+      char_id INT REFERENCES ${schemaName}.${charTable}(id),
+      review_id INT REFERENCES ${schemaName}.${tableName}(review_id),
+      value numeric(30,4)
     )
   `;
 
@@ -51,13 +70,33 @@ function createSchemaAndTable() {
       client.query(createPhotoTable, (photoerror) => {
         if (photoerror) {
           console.error('Error creating photo table:', photoerror);
-        } else {
-          console.log('Photo table created');
+          client.end();
+          return;
         }
-        client.end();
+        console.log('Photo table created or already exists');
+
+        client.query(createCharTable, (charror) => {
+          if (charror) {
+            console.error('Error creating char table:', charror);
+            client.end();
+            return;
+          }
+          console.log('Char table created or already exists');
+
+          client.query(createRevCharTable, (revcharerror) => {
+            if (revcharerror) {
+              console.error('Error creating revchar table:', revcharerror);
+              client.end();
+              return;
+            } else {
+              console.log('Revchar table created or already exists');
+              client.end();
+            }
+          });
+        });
       });
     });
   });
-}
+};
 
-createSchemaAndTable();
+  createSchemaAndTable();
