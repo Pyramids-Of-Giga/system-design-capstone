@@ -26,6 +26,8 @@ reviewsRouter.get('/:product_id/:sort/:count/:page', (req, res) => {
             response: rev.response,
             body: rev.body,
             date: revdate.toISOString(),
+            reviewer_name: rev.reviewer_name,
+            helpfulness: parseInt(rev.helpfulness),
             photos: rev.photos[0].id ? rev.photos : []
           }
         })
