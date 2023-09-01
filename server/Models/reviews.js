@@ -14,7 +14,7 @@ exports.getReviews = (productId, sort, count, offset) => {
   const query = `
     SELECT * FROM rnr.reviews
     WHERE product_id = $1
-    ORDER BY ${orderBy}}
+    ORDER BY ${orderBy}
     LIMIT $2
     OFFSET $3;
   `;
