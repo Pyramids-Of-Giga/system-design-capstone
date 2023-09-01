@@ -6,8 +6,10 @@ const filterArray = (array, page, count) => {
   console.log({length, start, page, count});
   // need to test this thoroughly
 
-  if (length < (page * count)) { // if we don't have enough results to do what user specified
-    if (length < count) {
+  // if we don't have enough results to do what user specified
+  if (length < (page * count)) {
+    // if we don't even have enough to populate an entire page
+    if (length <= count) {
       start = 0; // return what we have
     } else {
       start = length - count - 1; // count backwards from end of array and return count
