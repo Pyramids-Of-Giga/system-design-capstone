@@ -12,8 +12,17 @@ exports.getReviews = (productId, sort, count, offset) => {
   }
 
   const query = `
-    SELECT * FROM rnr.reviews
-    WHERE product_id = $1
+    SELECT rnr.reviews.*,
+    ARRAY_AGG(
+      jsonb_build_object(
+        'id', revpics.id,
+        'url', revpics.url
+      )
+    ) AS photos
+    FROM rnr.reviews
+    LEFT JOIN rnr.revpics ON rnr.reviews.review_id = revpics.review_id
+    WHERE reviews.product_id = $1
+    GROUP BY reviews.review_id
     ORDER BY ${orderBy}
     LIMIT $2
     OFFSET $3;
@@ -22,6 +31,9 @@ exports.getReviews = (productId, sort, count, offset) => {
   return Reviews.query(query, [productId, count, offset]);
 };
 
+exports.getMeta = (product_id) => {
+
+}
 
 // exports.addRecipe = (req, res) => {
 //   const formData = req.body;
