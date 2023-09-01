@@ -108,29 +108,49 @@ qaRouter.post("/questions", (req, res) => {
   const helpfulness = 0;
   const reported = false;
   const date = new Date().getTime();
-  console.log({product_id, body, date, email, name, helpfulness, reported})
-  queryDb(queryFuncObj.insertQuestion, product_id, body, date, email, name, helpfulness, reported, )
+  queryDb(queryFuncObj.insertQuestion, product_id, body, date, email, name, helpfulness, reported)
     .then((data) => res.status(200).send('Successfully stored question.'))
+    .catch((err) => res.status(400).send(err))
+  });
+
+// come back to this to refactor without setTimeout
+qaRouter.post("/questions/:question_id/answers", (req, res) => {
+  const { body, name, email, photos } = req.body;
+  let { question_id } = req.params;
+  question_id = Number(question_id);
+  const helpfulness = 0;
+  const reported = false;
+  const date = new Date().getTime();
+  queryDb(queryFuncObj.insertAnswer, question_id, body, date, name, email, reported, helpfulness)
+    .then((data) => {
+      if (photos.length === 0) {
+        return;
+      }
+      for (var i = 0; i < photos.length; i++) {
+        // console.log(data.rows[0].id);
+        // console.log('photos at i:', photos);
+        // console.log('what i pass to query: ', photos[i].url);
+        setTimeOut(insertPhoto, 100);
+        queryDb(queryFuncObj.insertPhotos, data.rows[0].id, photos[i].url)
+      }
+    })
+    .then(() => res.status(200).send('Successfully stored answer.'))
     .catch((err) => res.status(400).send(err))
 });
 
-qaRouter.post("questions/:question_id/answers", (req, res) => {
+qaRouter.put("/questions/:question_id/helpful", (req, res) => {
 
 });
 
-qaRouter.put("questions/:question_id/helpful", (req, res) => {
+qaRouter.put("/questions/:question_id/report", (req, res) => {
 
 });
 
-qaRouter.put("questions/:question_id/report", (req, res) => {
+qaRouter.put("/answers/:answer_id/helpful", (req, res) => {
 
 });
 
-qaRouter.put("answers/:answer_id/helpful", (req, res) => {
-
-});
-
-qaRouter.put("answers/:answer_id/report", (req, res) => {
+qaRouter.put("/answers/:answer_id/report", (req, res) => {
 
 });
 
