@@ -1,5 +1,4 @@
 const {Client} = require ('pg');
-const dataParser = require('./products_parser.js');
 
 const client = new Client({
   host: 'localhost',
