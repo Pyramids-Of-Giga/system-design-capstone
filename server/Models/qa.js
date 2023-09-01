@@ -54,7 +54,15 @@ module.exports = {
         text: queryText,
         values: queryParams,
       };
-    }
+    },
+    updateHelpfulness: (table, column_name, id_name, id_value) => {
+      const where_clause = `${id_name} = ${id_value}`;
+      return `UPDATE ${table} SET ${column_name} = ${column_name} + 1 WHERE ${where_clause}`
+    },
+    updateReport: (table, id_name, id_value) => {
+      const where_clause = `${id_name} = ${id_value}`;
+      return `UPDATE ${table} SET reported = TRUE WHERE ${where_clause};`
+    },
   },
 
   queryDb: (...args) => {

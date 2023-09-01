@@ -139,19 +139,33 @@ qaRouter.post("/questions/:question_id/answers", (req, res) => {
 });
 
 qaRouter.put("/questions/:question_id/helpful", (req, res) => {
-
+  const { question_id } = req.params;
+  queryDb(queryFuncObj.updateHelpfulness, 'questions', 'question_helpfulness', 'id', question_id)
+    .then(() => res.status(200).send('Successfully updated helpfulness.'))
+    .catch((err) => res.status(400).send(err))
 });
 
 qaRouter.put("/questions/:question_id/report", (req, res) => {
-
+  const { question_id } = req.params;
+  // console.log(question_id);
+  // console.log(queryFuncObj.updateReport('questions', 'id', question_id));
+  queryDb(queryFuncObj.updateReport, 'questions', 'id', question_id)
+    .then(() => res.status(200).send('Successfully reported.'))
+    .catch((err) => res.status(400).send(err))
 });
 
 qaRouter.put("/answers/:answer_id/helpful", (req, res) => {
-
-});
+  const { answer_id } = req.params;
+  queryDb(queryFuncObj.updateHelpfulness, 'answers', 'helpfulness', 'id', answer_id)
+    .then(() => res.status(200).send('Successfully updated helpfulness.'))
+    .catch((err) => res.status(400).send(err))
+  });
 
 qaRouter.put("/answers/:answer_id/report", (req, res) => {
-
+  const { answer_id } = req.params;
+  queryDb(queryFuncObj.updateReport, 'answers', 'id', answer_id)
+    .then(() => res.status(200).send('Successfully reported.'))
+    .catch((err) => res.status(400).send(err))
 });
 
 module.exports = qaRouter;
