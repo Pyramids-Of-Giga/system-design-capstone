@@ -69,17 +69,22 @@ FROM Characteristics;
   return Reviews.query(query, [product_id]);
 };
 
+exports.postReview = (product_id, rating, summary, body, recommend, reviewer_name, reviewer_email, photos, characteristics) => {
+  const insertReview = `
+  INSERT INTO rnr.reviews (product_id, rating, summary, body, recommend, reviewer_name, reviewer_email)
+  VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING review_id`;
 
-// exports.addRecipe = (req, res) => {
-//   const formData = req.body;
-//   const newRecipe = new Recipe (formData);
-//   newRecipe.save()
-//     .then(newRecipe => {
-//       console.log('New recipe saved:', newRecipe);
-//       res.status(200).json({message: 'New recipe saved'});
-//     })
-//     .catch(error => {
-//       console.error('Error saving new recipe:', error);
-//       res.status(500).json({error: "Error saving new recipe"});
-//     });
-// };
+  return Reviews.query(insertReview, [product_id, rating, summary, body, recommend, reviewer_name, reviewer_email])
+  .then(result => {
+    const reviewId = result.rows[0].review_id;
+    const photoPromises = photos.map(photoUrl => {
+      return Reviews.query('INSERT INTO rnr.revpics (review_id, url) VALUES ($1, $2);', [reviewId, photoUrl]);
+    });
+
+  const charPromises = Object.entries(characteristics).map(([charId, value]) => {
+    return Reviews.query('INSERT INTO rnr.revchars (review_id, characteristic_id, value) VALUES ($1, $2, $3);', [reviewId, charId, value]);
+  });
+
+  return Promise.all([...photoPromises, ...charPromises]);
+})
+};
