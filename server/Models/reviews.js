@@ -87,4 +87,43 @@ exports.postReview = (product_id, rating, summary, body, recommend, reviewer_nam
 
   return Promise.all([...photoPromises, ...charPromises]);
 })
+}
+exports.updateHelpfulness = (review_id) => {
+  const updateQuery = `
+    UPDATE rnr.reviews
+    SET helpfulness = helpfulness + 1
+    WHERE review_id = $1;
+  `;
+
+  return Reviews.query(updateQuery, [review_id]);
 };
+
+exports.toggleReportStatus = (review_id) => {
+  const toggleQuery = `
+    UPDATE rnr.reviews
+    SET reported = CASE
+                  WHEN reported = TRUE THEN FALSE
+                  ELSE TRUE
+                 END
+    WHERE review_id = $1;
+  `;
+
+  return Reviews.query(toggleQuery, [review_id]);
+};
+
+exports.toggleRecommendStatus = (review_id) => {
+  const toggleQuery = `
+    UPDATE rnr.reviews
+    SET recommend = CASE
+                  WHEN recommend = TRUE THEN FALSE
+                  ELSE TRUE
+                 END
+    WHERE review_id = $1;
+  `;
+
+  return Reviews.query(toggleQuery, [review_id]);
+};
+
+
+
+

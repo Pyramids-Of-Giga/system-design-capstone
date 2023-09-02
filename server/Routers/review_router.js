@@ -1,4 +1,4 @@
-const { getReviews, getMeta, postReview } = require('../Models/reviews.js');
+const { getReviews, getMeta, postReview, updateHelpfulness, toggleReportStatus, toggleRecommendStatus } = require('../Models/reviews.js');
 const express = require('express');
 const reviewsRouter = express.Router();
 
@@ -72,6 +72,41 @@ reviewsRouter.post('/newreview', (req, res) => {
   });
 });
 
+reviewsRouter.put('/:review_id/helpful', (req, res) => {
+  const { review_id } = req.params;
+  updateHelpfulness(review_id)
+  .then(() => {
+    res.status(200).send('Helpfulness added');
+  })
+  .catch(err => {
+    console.error(err);
+    res.status(500).send('Error updating helpfulness');
+  });
+});
+
+reviewsRouter.put('/:review_id/report', (req, res) => {
+  const { review_id } = req.params;
+  toggleReportStatus(review_id)
+    .then(() => {
+      res.status(200).send('Report status toggled successfully');
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).send('Error toggling report status');
+    });
+});
+
+reviewsRouter.put('/:review_id/recommend', (req, res) => {
+  const { recommend } = req.params;
+  toggleRecommendStatus(recommend)
+    .then(() => {
+      res.status(200).send('Report status toggled successfully');
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).send('Error toggling report status');
+    });
+});
 
 module.exports = reviewsRouter;
 
