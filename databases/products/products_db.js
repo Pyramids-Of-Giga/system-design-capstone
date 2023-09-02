@@ -1,5 +1,5 @@
 const {Client} = require ('pg');
-const dataParser = require('./products_parser.js');
+const util = require('util')
 
 const client = new Client({
   host: 'localhost',
@@ -18,6 +18,7 @@ client.connect()
     if (productsSeeded === false) {
       seedTables();
     }
+
   }).catch(err => {
     console.log('Error connecting to products PG', err)
   })
@@ -33,6 +34,7 @@ client.connect()
     const tables = [
       {name: 'products', columns: ['id', 'name', 'slogan', 'description', 'category', 'default_price']},
       {name: 'styles', columns: ['id', 'product_id', 'name', 'sale_price', 'original_price', 'default_style']},
+      {name: 'photos', columns: ['id', 'style_id', 'url', 'thumbnail_url']},
       {name: 'skus', columns: ['id', 'style_id', 'size', 'quantity']},
       {name: 'features', columns: ['id', 'product_id', 'feature', 'value']},
       {name: 'related', columns: ['id', 'current_product_id', 'related_product_id']},
