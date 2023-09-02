@@ -98,9 +98,6 @@ qaRouter.get("/questions/:question_id/answers", (req, res) => {
       )
     })
     .then((data) => res.status(200).send(data))
-    .then(() => {
-      console.log(`get /answers execution time: ${end - start} milliseconds`);
-    })
     .catch((err) => console.log('error getting answers from db - ', err))
 
 });
