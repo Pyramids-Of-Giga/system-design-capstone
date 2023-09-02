@@ -67,24 +67,26 @@ describe('nestObj function', () => {
   const child = [
     { name: 'bar',
       property: 'test',
-      id: 42
+      child_id: 3,
+      parent_id: 42
     },
     { name: 'presley',
       property: 'musician',
-      id: 35
+      child_id: 1,
+      parent_id: 35
     },
     { name: 'costello',
       property: 'also musician',
-      id: 35
+      child_id: 2,
+      parent_id: 35,
     },
   ];
   const parentJoinKey = 'id';
-  const childJoinKey = 'id';
+  const childJoinKey = 'parent_id';
   const childName = 'child';
 
   it('should nest an object in another object', () => {
     const result = nestObj(parent, child, parentJoinKey, childJoinKey, childName);
-    // console.log(result);
     expect(Object.keys(result[0])).toEqual(['name', 'id', 'child']);
   });
 })

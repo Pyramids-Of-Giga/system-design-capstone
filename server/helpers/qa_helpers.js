@@ -21,6 +21,8 @@ const formatTime = (obj, property) => {
 }
 
 const nestObj = (parent, child, parentJoinKey, childJoinKey, childName) => {
+  // this will not work if childJoinKey and parentJoinKey are the same
+  // assumes that child has a property "id" that is its unique identifier
   if (childName === 'photos') {
     var storageFunc = (tempStore, childObj) => {
       tempStore.push(childObj);
