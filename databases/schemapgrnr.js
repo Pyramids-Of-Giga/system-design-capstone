@@ -1,4 +1,4 @@
-const client = require('./dbpgrnr.js');
+const pool = require('./dbpgrnr.js');
 
 function createSchemaAndTable() {
   const schemaName = 'rnr';
@@ -44,53 +44,47 @@ function createSchemaAndTable() {
     CREATE TABLE IF NOT EXISTS ${schemaName}.${revCharTable} (
       id serial PRIMARY KEY,
       char_id INT REFERENCES ${schemaName}.${charTable}(id),
-      review_id INT REFERENCES ${schemaName}.${tableName}(review_id),
+      review_id INT REFERENCES ${schemaName}.${tableName}(id),
       value numeric(30,4)
     )
   `;
 
-  client.query(createSchema, (schemaErr) => {
+  pool.query(createSchema, (schemaErr) => {
     if (schemaErr) {
       console.error('Error creating schema:', schemaErr);
-      client.end();
       return;
     }
 
     console.log(`Schema "${schemaName}" created or already exists`);
 
-    client.query(createTable, (tableErr) => {
+    pool.query(createTable, (tableErr) => {
       if (tableErr) {
         console.error('Error creating table:', tableErr);
-        client.end();
         return;
       }
 
       console.log(`Table "${tableName}" created or already exists in schema "${schemaName}"`);
 
-      client.query(createPhotoTable, (photoerror) => {
+      pool.query(createPhotoTable, (photoerror) => {
         if (photoerror) {
           console.error('Error creating photo table:', photoerror);
-          client.end();
           return;
         }
         console.log('Photo table created or already exists');
 
-        client.query(createCharTable, (charror) => {
+        pool.query(createCharTable, (charror) => {
           if (charror) {
             console.error('Error creating char table:', charror);
-            client.end();
             return;
           }
           console.log('Char table created or already exists');
 
-          client.query(createRevCharTable, (revcharerror) => {
+          pool.query(createRevCharTable, (revcharerror) => {
             if (revcharerror) {
               console.error('Error creating revchar table:', revcharerror);
-              client.end();
               return;
             } else {
               console.log('Revchar table created or already exists');
-              client.end();
             }
           });
         });
