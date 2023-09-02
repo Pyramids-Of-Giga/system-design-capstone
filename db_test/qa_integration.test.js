@@ -3,7 +3,7 @@
  */
 const { filterArray, formatTime, nestObj } = require("../server/helpers/qa_helpers");
 const { queryFuncObj, queryDb } = require("../server/Models/qa");
-const { answers, photos, questions } = require("../exampleData/qa_data");
+//const { answers, photos, questions } = require("../exampleData/qa_data");
 
 describe('filterArray function', () => {
   it('should return an array of length equal to count variable', () => {
