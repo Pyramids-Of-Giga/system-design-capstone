@@ -29,6 +29,8 @@ function importData(csvFilePath, tableName) {
     try {
         await importData('/Users/Shared/reviews.csv', 'rnr.reviews');
         await importData('/Users/Shared/reviews_photos.csv', 'rnr.revpics');
+        await importData('/Users/Shared/characteristics.csv', 'rnr.chars');
+        await importData('/Users/Shared/characteristic_reviews.csv', 'rnr.revchars');
     } catch (error) {
         console.error("Error during import:", error);
     } finally {

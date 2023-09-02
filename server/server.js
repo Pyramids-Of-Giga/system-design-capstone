@@ -2,11 +2,12 @@ const path = require("path");
 const express = require("express");
 const app = express();
 const axios = require("axios");
+const handlers = require('./Models/reviews.js');
 
 const serverdb = require('../databases/dbpgrnr.js');
-const productdb = require('./databases/products/products_db.js');
+//const productdb = require('./databases/products/products_db.js');
 
-app.use(express.static(path.join(__dirname, "./client/dist")));
+app.use(express.static(path.join(__dirname, "../client/dist")));
 app.use(express.json());
 
 const productRouter = require("./Routers/product_router");
@@ -18,7 +19,8 @@ app.use("/reviews", reviewsRouter);
 app.use("/qa", qaRouter);
 
 // added port into .env
-const port = process.env.PORT || 5000;
+// const port = process.env.PORT || 5000;
+const port = process.env.PORT || 3000;
 
 app.listen(port, () => {
   console.log(`Listening at port http://localhost:${port}`);
