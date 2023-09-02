@@ -70,18 +70,4 @@ module.exports = {
     return client.query(queryName(...restArgs))
       .catch((err) => console.log(err));
   },
-
-  // getDistinctQuestionIds: (productId) => {
-  //   client.query(`${queries.distinctQuestionIds(productId)}`)
-  //     .then((res) => console.log(res.rows))
-  //     .catch((err) => console.log(err))
-  //     .finally(() => client.end());
-  // },
 }
-
-
-
-// getDistinctQuestionIds(1);
-// getQuestions(1);
-// getAnswers([1,2]);
-// getQuestionsAndAnswers(1);

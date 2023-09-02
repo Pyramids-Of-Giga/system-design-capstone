@@ -1,4 +1,8 @@
+/**
+ * @jest-environment node
+ */
 const { filterArray, formatTime, nestObj } = require("../server/helpers/qa_helpers");
+const { queryFuncObj, queryDb } = require("../server/Models/qa");
 const { answers, photos, questions } = require("../exampleData/qa_data");
 
 describe('filterArray function', () => {
@@ -89,4 +93,70 @@ describe('nestObj function', () => {
     const result = nestObj(parent, child, parentJoinKey, childJoinKey, childName);
     expect(Object.keys(result[0])).toEqual(['name', 'id', 'child']);
   });
-})
+  // test if child is empty
+  // test if parent is empty
+});
+
+const { Client } = require('pg'); // Import the PostgreSQL client library
+let client; // Declare the client variable
+
+beforeAll(() => {
+  // Create and configure the client here
+  client = new Client({
+    host: 'localhost',
+    user: 'postgres',
+    port: 5432,
+    password: 'giga',
+    database: 'SDC_QuestionsAnswers'
+  });
+
+  // Establish the database connection
+  return client.connect(); // Return the promise to Jest
+});
+
+afterAll(() => {
+  // Close the database connection when all tests are done
+  return client.end(); // Return the promise to Jest
+});
+
+describe('Test query speeds - ', () => {
+  it('getQuestions should run in under 50ms', () => {
+    const id = Math.floor(Math.random() * 1000000);
+    const limit = 5;
+    const start = performance.now();
+    queryDb(queryFuncObj.getQuestions, [id], limit)
+      .then(() => performance.now())
+      .then((end) => end - start)
+      .then((queryTime) => expect(queryTime).toBeLessThan(50));
+  });
+
+  it('getAnswers should run in under 50ms', () => {
+    const id = Math.floor(Math.random() * 1000000);
+    const limit = 5;
+    const start = performance.now();
+    queryDb(queryFuncObj.getAnswers, [id], limit)
+      .then(() => performance.now())
+      .then((end) => end - start)
+      .then((queryTime) => expect(queryTime).toBeLessThan(50));
+  });
+
+  it('getAnswersPhotos should run in under 50ms', () => {
+    const id = Math.floor(Math.random() * 1000000);
+    const limit = 5;
+    const start = performance.now();
+    queryDb(queryFuncObj.getAnswerPhotos, [id])
+      .then(() => performance.now())
+      .then((end) => end - start)
+      .then((queryTime) => expect(queryTime).toBeLessThan(50));
+  });
+
+  it('getDistinctQuestionIds should run in under 50ms', () => {
+    const id = Math.floor(Math.random() * 1000000);
+    const limit = 5;
+    const start = performance.now();
+    queryDb(queryFuncObj.getDistinctQuestionIds, [id])
+      .then(() => performance.now())
+      .then((end) => end - start)
+      .then((queryTime) => expect(queryTime).toBeLessThan(50));
+  });
+});

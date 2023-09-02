@@ -4,7 +4,6 @@ const { queryFuncObj, queryDb } = require("../Models/qa");
 const { formatTime, filterArray, nestObj } = require("../helpers/qa_helpers");
 
 qaRouter.get("/questions", (req, res) => {
-  let start = performance.now();
   let { productId = 1, page = 1, count = 5} = req.query;
   // is there a better way to convert from string to number? JSON.parse?
   productId = Number(productId);
@@ -18,8 +17,13 @@ qaRouter.get("/questions", (req, res) => {
   // Product ID => Question ID(s) => Answer ID(s) => Photos
   let getParallelQueries = () => {
     return new Promise((resolve, reject) => {
+      const ansGetStart = performance.now();
       const getAnswers = queryDb(queryFuncObj.getDistinctQuestionIds, [productId])
-        .then((data) => data.rows.map((obj) => obj.id))
+        .then((data) => {
+          const ansGetEnd = performance.now();
+          console.log(`get /questions execution time: ${ansGetEnd - ansGetStart} milliseconds`);
+          return data.rows.map((obj) => obj.id)
+        })
         .then((data) => queryDb(queryFuncObj.getAnswers, data))
         .then((data) => answers = data.rows)
         .then(() => answers.map((obj) => formatTime(obj, 'date')))
@@ -62,10 +66,6 @@ qaRouter.get("/questions", (req, res) => {
       )
     })
     .then((data) => res.status(200).send(data))
-    .then(() => {
-      let end = performance.now();
-      console.log(`get /questions execution time: ${end - start} milliseconds`);
-    })
 });
 
 qaRouter.get("/questions/:question_id/answers", (req, res) => {
