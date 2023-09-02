@@ -4,6 +4,7 @@ const { queryFuncObj, queryDb } = require("../Models/qa");
 const { formatTime, filterArray, nestObj } = require("../helpers/qa_helpers");
 
 qaRouter.get("/questions", (req, res) => {
+  let start = performance.now();
   let { productId = 1, page = 1, count = 5} = req.query;
   // is there a better way to convert from string to number? JSON.parse?
   productId = Number(productId);
@@ -60,10 +61,15 @@ qaRouter.get("/questions", (req, res) => {
         }
       )
     })
-    .then((data) => res.status(200).send(data));
+    .then((data) => res.status(200).send(data))
+    .then(() => {
+      let end = performance.now();
+      console.log(`get /questions execution time: ${end - start} milliseconds`);
+    })
 });
 
 qaRouter.get("/questions/:question_id/answers", (req, res) => {
+  let start = performance.now();
   let { page = 1, count = 5} = req.query;
   let { question_id } = req.params;
   // is there a better way to convert from string to number? JSON.parse?
@@ -100,7 +106,12 @@ qaRouter.get("/questions/:question_id/answers", (req, res) => {
       )
     })
     .then((data) => res.status(200).send(data))
+    .then(() => {
+      let end = performance.now();
+      console.log(`get /answers execution time: ${end - start} milliseconds`);
+    })
     .catch((err) => console.log('error getting answers from db - ', err))
+
 });
 
 qaRouter.post("/questions", (req, res) => {
