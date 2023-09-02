@@ -79,8 +79,10 @@ qaRouter.get("/questions/:question_id/answers", (req, res) => {
   let answers;
   let photos;
   // queryDbLimit([question_id], queryFuncObj.getAnswersOnly, limit) // old
+  let start = performance.now();
   queryDb(queryFuncObj.getAnswers, [question_id], limit)
     .then((data) => answers = data.rows)
+    .then(() let end = performance.now())
     .then(() => answers.map((obj) => formatTime(obj, 'date')))
     .then(() => answers.map((obj) => obj.id))
     .then((data) => queryDb(queryFuncObj.getAnswerPhotos, data))
@@ -107,7 +109,6 @@ qaRouter.get("/questions/:question_id/answers", (req, res) => {
     })
     .then((data) => res.status(200).send(data))
     .then(() => {
-      let end = performance.now();
       console.log(`get /answers execution time: ${end - start} milliseconds`);
     })
     .catch((err) => console.log('error getting answers from db - ', err))

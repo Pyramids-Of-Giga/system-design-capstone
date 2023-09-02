@@ -127,7 +127,10 @@ describe('Test query speeds - ', () => {
     queryDb(queryFuncObj.getQuestions, [id], limit)
       .then(() => performance.now())
       .then((end) => end - start)
-      .then((queryTime) => expect(queryTime).toBeLessThan(50));
+      .then((queryTime) => {
+        console.log('getQuestions ',queryTime);
+        expect(queryTime).toBeLessThan(50)
+      });
   });
 
   it('getAnswers should run in under 50ms', () => {
@@ -137,7 +140,10 @@ describe('Test query speeds - ', () => {
     queryDb(queryFuncObj.getAnswers, [id], limit)
       .then(() => performance.now())
       .then((end) => end - start)
-      .then((queryTime) => expect(queryTime).toBeLessThan(50));
+      .then((queryTime) => {
+        console.log('getAnswers ',queryTime);
+        expect(queryTime).toBeLessThan(50)
+      });
   });
 
   it('getAnswersPhotos should run in under 50ms', () => {
@@ -147,7 +153,10 @@ describe('Test query speeds - ', () => {
     queryDb(queryFuncObj.getAnswerPhotos, [id])
       .then(() => performance.now())
       .then((end) => end - start)
-      .then((queryTime) => expect(queryTime).toBeLessThan(50));
+      .then((queryTime) => {
+        console.log('getAnswersPhotos ',queryTime);
+        expect(queryTime).toBeLessThan(50)
+      });
   });
 
   it('getDistinctQuestionIds should run in under 50ms', () => {
@@ -157,6 +166,9 @@ describe('Test query speeds - ', () => {
     queryDb(queryFuncObj.getDistinctQuestionIds, [id])
       .then(() => performance.now())
       .then((end) => end - start)
-      .then((queryTime) => expect(queryTime).toBeLessThan(50));
+      .then((queryTime) => {
+        console.log('getDistinctQuestionIds ',queryTime);
+        expect(queryTime).toBeLessThan(50)
+      });
   });
 });
