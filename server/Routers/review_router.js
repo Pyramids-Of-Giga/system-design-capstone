@@ -100,11 +100,11 @@ reviewsRouter.put('/:review_id/recommend', (req, res) => {
   const { recommend } = req.params;
   toggleRecommendStatus(recommend)
     .then(() => {
-      res.status(200).send('Report status toggled successfully');
+      res.status(200).send('Recommend status toggled successfully');
     })
     .catch(err => {
       console.error(err);
-      res.status(500).send('Error toggling report status');
+      res.status(500).send('Error toggling recommend status');
     });
 });
 
