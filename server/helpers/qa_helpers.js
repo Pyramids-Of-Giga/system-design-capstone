@@ -3,21 +3,15 @@ const { answers, photos, questions } = require("../../exampleData/qa_data");
 const filterArray = (array, page, count) => {
   const length = array.length;
   let start = (page * count) - count;
-  console.log({length, start, page, count});
-  // need to test this thoroughly
-
-  // if we don't have enough results to do what user specified
   if (length < (page * count)) {
-    // if we don't even have enough to populate an entire page
     if (length <= count) {
-      start = 0; // return what we have
+      start = 0;
     } else {
-      start = length - count - 1; // count backwards from end of array and return count
+      start = length - count - 1;
     }
   }
-  console.log(start)
-  console.log(array.slice(start).length);
-  return array.slice(start);
+  const end = start + 5
+  return array.slice(start, end);
 }
 
 const formatTime = (obj, property) => {
@@ -27,6 +21,8 @@ const formatTime = (obj, property) => {
 }
 
 const nestObj = (parent, child, parentJoinKey, childJoinKey, childName) => {
+  // this will not work if childJoinKey and parentJoinKey are the same
+  // assumes that child has a property "id" that is its unique identifier
   if (childName === 'photos') {
     var storageFunc = (tempStore, childObj) => {
       tempStore.push(childObj);
@@ -43,7 +39,7 @@ const nestObj = (parent, child, parentJoinKey, childJoinKey, childName) => {
     for (var j = 0; j < child.length; j++) {
       let childObj = child[j];
       if (childObj[childJoinKey] === parent[i][parentJoinKey]) {
-        delete childObj[childJoinKey];
+        delete childObj[childJoinKey]; // if join keys are equal this will make a key 'undefined'
         storageFunc(tempStore, childObj);
       }
     }
@@ -56,6 +52,3 @@ const nestObj = (parent, child, parentJoinKey, childJoinKey, childName) => {
 module.exports.nestObj = nestObj;
 module.exports.formatTime = formatTime;
 module.exports.filterArray = filterArray;
-// nestObj(answers, photos, 'id', 'answer_id', 'photos');
-// nestObj(questions, answers, 'question_id', 'question_id', 'answers');
-// formatTime(questions[0].question_date);

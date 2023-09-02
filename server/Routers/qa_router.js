@@ -60,19 +60,17 @@ qaRouter.get("/questions", (req, res) => {
         }
       )
     })
-    .then((data) => res.status(200).send(data));
+    .then((data) => res.status(200).send(data))
 });
 
 qaRouter.get("/questions/:question_id/answers", (req, res) => {
   let { page = 1, count = 5} = req.query;
   let { question_id } = req.params;
-  // is there a better way to convert from string to number? JSON.parse?
   page = Number(page);
   count = Number(count);
   const limit = page * count;
   let answers;
   let photos;
-  // queryDbLimit([question_id], queryFuncObj.getAnswersOnly, limit) // old
   queryDb(queryFuncObj.getAnswers, [question_id], limit)
     .then((data) => answers = data.rows)
     .then(() => answers.map((obj) => formatTime(obj, 'date')))
@@ -100,7 +98,11 @@ qaRouter.get("/questions/:question_id/answers", (req, res) => {
       )
     })
     .then((data) => res.status(200).send(data))
+    .then(() => {
+      console.log(`get /answers execution time: ${end - start} milliseconds`);
+    })
     .catch((err) => console.log('error getting answers from db - ', err))
+
 });
 
 qaRouter.post("/questions", (req, res) => {

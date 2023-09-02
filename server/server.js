@@ -5,7 +5,7 @@ const axios = require("axios");
 const handlers = require('./Models/reviews.js');
 
 const serverdb = require('../databases/dbpgrnr.js');
-//const productdb = require('./databases/products/products_db.js');
+const productdb = require('./databases/products/products_db.js');
 
 app.use(express.static(path.join(__dirname, "../client/dist")));
 app.use(express.json());
