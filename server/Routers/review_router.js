@@ -1,4 +1,4 @@
-const { getReviews } = require('../Models/reviews.js');
+const { getReviews, getMeta } = require('../Models/reviews.js');
 const express = require('express');
 const reviewsRouter = express.Router();
 
@@ -44,7 +44,15 @@ reviewsRouter.get('/meta/:product_id', (req, res) => {
   const { product_id } = req.params;
   getMeta(product_id)
     .then((metaData) => {
-      res.json(metaData)
+      var ratingsMeta =
+      {
+        product_id: String(product_id),
+        ratings: metaData.rows[0].ratings,
+        recommended: metaData.rows[0].recommended,
+        characteristics: metaData.rows[0].characteristics,
+      }
+
+      res.json(ratingsMeta)
   })
   .catch((err) => {
     console.error(err);

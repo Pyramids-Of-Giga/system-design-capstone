@@ -32,8 +32,43 @@ exports.getReviews = (productId, sort, count, offset) => {
 };
 
 exports.getMeta = (product_id) => {
+  const query = `
+  WITH RatingsSummary AS (
+    SELECT jsonb_object_agg(rating::text, cnt) AS ratings
+    FROM (
+        SELECT rating, COUNT(*) AS cnt
+        FROM rnr.reviews
+        WHERE product_id = $1
+        GROUP BY rating
+    ) sub
+),
 
-}
+Recommended AS (
+  SELECT
+      COUNT(*) FILTER (WHERE recommend = true) AS recommend_count,
+      COUNT(*) FILTER (WHERE recommend = false) AS not_recommend_count
+  FROM rnr.reviews
+  WHERE product_id = $1
+),
+
+Characteristics AS (
+    SELECT chars.name, chars.id AS id, AVG(revchars.value) AS value
+    FROM rnr.chars
+    JOIN rnr.revchars ON chars.id = revchars.char_id
+    WHERE chars.product_id = $1
+    GROUP BY chars.id
+)
+
+SELECT
+    (SELECT ratings FROM RatingsSummary) AS ratings,
+    (SELECT jsonb_build_object('0', recommend_count, '1', not_recommend_count) FROM Recommended) AS recommended,
+    jsonb_object_agg(name, jsonb_build_object('id', id, 'value', value)) AS characteristics
+FROM Characteristics;
+`
+
+  return Reviews.query(query, [product_id]);
+};
+
 
 // exports.addRecipe = (req, res) => {
 //   const formData = req.body;
