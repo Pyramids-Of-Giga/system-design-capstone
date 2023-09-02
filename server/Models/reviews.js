@@ -52,7 +52,7 @@ Recommended AS (
 ),
 
 Characteristics AS (
-    SELECT chars.name, chars.id AS id, AVG(revchars.value) AS value
+    SELECT chars.name, chars.id AS id, CAST(ROUND(AVG(revchars.value), 4) AS TEXT) AS value
     FROM rnr.chars
     JOIN rnr.revchars ON chars.id = revchars.char_id
     WHERE chars.product_id = $1
