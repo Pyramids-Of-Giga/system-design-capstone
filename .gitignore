@@ -1,5 +1,4 @@
 node_modules
-exampleData
 client/dist/bundle.js
 client/dist/bundle.js.map
 .env

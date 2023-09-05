@@ -1,19 +1,20 @@
 const {Client} = require ('pg');
+require('dotenv').config();
 
 const client = new Client({
   host: 'localhost',
   user: 'postgres',
-  port: 5432,
-  password: 'giga',
-  database: 'SDC_QuestionsAnswers'
+  port: process.env.DB_PORT,
+  password: process.env.DB_PW,
+  database: process.env.DB_NAME,
 });
 
 client.connect()
   .then(() => {
-    console.log('Connected SDC_QuestionsAnswers')
+    console.log(`Connected to ${process.env.DB_NAME}`)
   })
   .catch(err => {
-    console.log('Error connecting to SDC_QuestionsAnswers', err)
+    console.log(`Error connecting to ${process.env.DB_NAME}`, err)
   });
 
 module.exports = client;
