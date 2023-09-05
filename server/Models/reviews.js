@@ -38,7 +38,7 @@ exports.getMeta = (product_id) => {
     FROM (
         SELECT rating, COUNT(*) AS cnt
         FROM rnr.reviews
-        WHERE product_id = $1
+        WHERE product_id = ${product_id}
         GROUP BY rating
     ) sub
 ),
@@ -48,14 +48,14 @@ Recommended AS (
       COUNT(*) FILTER (WHERE recommend = true) AS recommend_count,
       COUNT(*) FILTER (WHERE recommend = false) AS not_recommend_count
   FROM rnr.reviews
-  WHERE product_id = $1
+  WHERE product_id = ${product_id}
 ),
 
 Characteristics AS (
     SELECT chars.name, chars.id AS id, CAST(ROUND(AVG(revchars.value), 4) AS TEXT) AS value
     FROM rnr.chars
     JOIN rnr.revchars ON chars.id = revchars.char_id
-    WHERE chars.product_id = $1
+    WHERE chars.product_id = ${product_id}
     GROUP BY chars.id
 )
 
@@ -66,7 +66,7 @@ SELECT
 FROM Characteristics;
 `
 
-  return Reviews.query(query, [product_id]);
+  return Reviews.query(query);
 };
 
 exports.postReview = (product_id, rating, summary, body, recommend, reviewer_name, reviewer_email, photos, characteristics) => {

@@ -2,6 +2,7 @@ const { getReviews, getMeta, postReview, updateHelpfulness, toggleReportStatus, 
 const express = require('express');
 const reviewsRouter = express.Router();
 
+
 reviewsRouter.get('/:product_id/:sort/:count/:page', (req, res) => {
   const { product_id, sort, count, page } = req.params;
 
@@ -9,6 +10,7 @@ reviewsRouter.get('/:product_id/:sort/:count/:page', (req, res) => {
   const numericCount = parseInt(count, 10) || 5;
   const numericPage = parseInt(page, 10) || 1;
   const offset = (numericPage - 1) * numericCount;
+
 
   getReviews(product_id, sort || 'newest', numericCount, offset)
   .then((reviews) => {
@@ -40,6 +42,7 @@ reviewsRouter.get('/:product_id/:sort/:count/:page', (req, res) => {
   });
 });
 
+
 reviewsRouter.get('/meta/:product_id', (req, res) => {
   const { product_id } = req.params;
   getMeta(product_id)
@@ -51,7 +54,6 @@ reviewsRouter.get('/meta/:product_id', (req, res) => {
         recommended: metaData.rows[0].recommended,
         characteristics: metaData.rows[0].characteristics,
       }
-
       res.json(ratingsMeta)
   })
   .catch((err) => {
@@ -62,8 +64,11 @@ reviewsRouter.get('/meta/:product_id', (req, res) => {
 
 reviewsRouter.post('/newreview', (req, res) => {
   const { product_id, rating, summary, body, recommend, reviewer_name, reviewer_email, photos, characteristics} = req.body;
+
+
   postReview(product_id, rating, summary, body, recommend, reviewer_name, reviewer_email, photos, characteristics)
   .then(() => {
+
     res.status(201).send('Review added successfully');
   })
   .catch(err => {
@@ -98,8 +103,12 @@ reviewsRouter.put('/:review_id/report', (req, res) => {
 
 reviewsRouter.put('/:review_id/recommend', (req, res) => {
   const { recommend } = req.params;
+  let startTime = performance.now();
   toggleRecommendStatus(recommend)
     .then(() => {
+      let endTime = performance.now();
+    let timeDiff = endTime - startTime;
+    console.log(`The code took ${timeDiff} milliseconds to execute.`);
       res.status(200).send('Recommend status toggled successfully');
     })
     .catch(err => {
