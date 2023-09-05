@@ -5,8 +5,9 @@ const axios = require("axios");
 const handlers = require('./Models/reviews.js');
 const reviewsRouter = require('./Routers/review_router.js');
 
+//const handlers = require('./Models/reviews.js');
 
-const serverdb = require('../databases/dbpgrnr.js');
+//const serverdb = require('../databases/dbpgrnr.js');
 const productdb = require('../databases/products/products_db.js');
 
 app.use(express.static(path.join(__dirname, "../client/dist")));
@@ -17,11 +18,12 @@ app.use((err, req, res, next) => {
 });
 
 const productRouter = require("./Routers/product_router");
-const qaRouter = require("./Routers/qa_router");
+//const reviewsRouter = require("./Routers/review_router");
+//const qaRouter = require("./Routers/qa_router");
 
 app.use("/products", productRouter);
-app.use("/reviews", reviewsRouter);
-app.use("/qa", qaRouter);
+//app.use("/reviews", reviewsRouter);
+//app.use("/qa", qaRouter);
 
 // added port into .env
 // const port = process.env.PORT || 5000;
