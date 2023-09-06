@@ -2,7 +2,7 @@ const express = require("express");
 const productRouter = express.Router();
 const queries = require('../Models/products.js');
 
-productRouter.get("/", (req, res) => {
+var getProducts = productRouter.get("/", (req, res) => {
   let t0 = performance.now();
   let { page = 1, count = 5 } = req.query;
   queries.getProducts(page, count).then(result => {
@@ -15,8 +15,7 @@ productRouter.get("/", (req, res) => {
     res.send('not found');
   })
 });
-
-productRouter.get("/:product_id", (req, res) => {
+var getProductById = productRouter.get("/:product_id", (req, res) => {
   let t0 = performance.now();
   let { product_id = 1 } = req.params;
   queries.getProductById(product_id).then(result => {
@@ -29,7 +28,7 @@ productRouter.get("/:product_id", (req, res) => {
     res.send('not found');
   })
 });
-productRouter.get("/:product_id/styles", (req, res) => {
+var getProductStyles = productRouter.get("/:product_id/styles", (req, res) => {
   let t0 = performance.now();
   let { product_id = 1 } = req.params;
   queries.getProductStyles(product_id).then(result => {
@@ -42,7 +41,7 @@ productRouter.get("/:product_id/styles", (req, res) => {
     res.send('not found');
   })
 });
-productRouter.get("/:product_id/related", (req, res) => {
+var getRelatedProducts = productRouter.get("/:product_id/related", (req, res) => {
   let t0 = performance.now();
   let { product_id = 1 } = req.params;
   queries.getRelatedProducts(product_id).then(result => {
