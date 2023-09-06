@@ -1,4 +1,4 @@
-const client = require('./dbpgrnr.js');
+const pool = require('./dbpgrnr.js');
 const fs = require('fs');
 const copyFrom = require('pg-copy-streams').from;
 
@@ -6,7 +6,7 @@ function importData(csvFilePath, tableName) {
     return new Promise((resolve, reject) => {
         const copyQuery = `COPY ${tableName} FROM STDIN DELIMITER ',' CSV HEADER`;
         const fileStream = fs.createReadStream(csvFilePath);
-        const dbStream = client.query(copyFrom(copyQuery));
+        const dbStream = pool.query(copyFrom(copyQuery));
 
         fileStream.on('error', (error) => {
             console.error('Error reading CSV file:', error);
@@ -34,6 +34,6 @@ function importData(csvFilePath, tableName) {
     } catch (error) {
         console.error("Error during import:", error);
     } finally {
-        client.end();
+        pool.end();
     }
 })();

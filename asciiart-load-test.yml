@@ -1,0 +1,50 @@
+config:
+  # This is a test server run by team Artillery
+  # It's designed to be highly scalable
+  target: http://localhost:3000
+  phases:
+    - duration: 30
+      arrivalRate: 10
+      rampTo: 25
+      name: Ramp up
+    - duration: 10
+      arrivalRate: 25
+      rampTo: 25
+      name: 100 req / sec
+
+  # phases:
+  #   - duration: 30
+  #     arrivalRate: 1
+  #     rampTo: 10
+  #     name: Phase 1 -- 1 to 10 req/sec
+  #   - duration: 30
+  #     arrivalRate: 10
+  #     rampTo: 100
+  #     name: Phase 2 -- 10 to 100 req/sec
+  #   - duration: 60
+  #     arrivalRate: 100
+  #     rampto: 1000
+  #     name: Phase 3 -- 100 - 1000 req/sec
+  #   - duration: 10
+  #     arrivalRate: 1000
+  #     name: Phase 4 -- constant 1000 req/sec
+  # Load & configure a couple of useful plugins
+  # https://docs.art/reference/extensions
+  plugins:
+    ensure: {}
+    apdex: {}
+    metrics-by-endpoint: {}
+  apdex:
+    threshold: 100
+  ensure:
+      thresholds:
+        - http.response_time.p99: 100
+        - http.response_time.p95: 75
+scenarios:
+  - flow:
+      - loop:
+        - get:
+            url: "/qa/questions?productId=256&page=5&count=5"
+        - get:
+            url: "/qa/questions/256/answers?page=2&count=5"
+        count: 100

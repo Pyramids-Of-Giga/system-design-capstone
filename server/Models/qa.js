@@ -63,7 +63,43 @@ module.exports = {
       const where_clause = `${id_name} = ${id_value}`;
       return `UPDATE ${table} SET reported = TRUE WHERE ${where_clause};`
     },
-  },
+    seedQuery: (table, columns, filePath) => {
+      return `COPY ${table} (${columns.join(',')})
+      FROM '${filePath}' WITH DELIMITER ',' CSV HEADER;`
+    },
+    createTablesQuery: () => {
+      return `CREATE SCHEMA IF NOT EXISTS questions_answers;
+      CREATE TABLE IF NOT EXISTS questions(
+        id SERIAL PRIMARY KEY,
+        product_id INT,
+        question_body VARCHAR(1000),
+        question_date BIGINT,
+        email VARCHAR(60),
+        asker_name VARCHAR(60),
+        question_helpfulness INT,
+        reported BOOLEAN
+        );
+      CREATE TABLE IF NOT EXISTS answers(
+        id SERIAL PRIMARY KEY,
+        question_id INT,
+        body VARCHAR(1000),
+        date BIGINT,
+        answerer_name VARCHAR(60),
+        email VARCHAR(60),
+        reported BOOLEAN,
+        helpfulness INT,
+          FOREIGN KEY(question_id)
+            REFERENCES questions(id)
+        );
+      CREATE TABLE IF NOT EXISTS photos(
+        id SERIAL PRIMARY KEY,
+        answer_id INT,
+        url VARCHAR,
+          FOREIGN KEY(answer_id)
+            REFERENCES answers(id)
+      );`
+    }
+   },
 
   queryDb: (...args) => {
     const [queryName, ...restArgs] = args;
