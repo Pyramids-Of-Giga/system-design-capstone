@@ -22,8 +22,8 @@ const qaRouter = require("./Routers/qa_router");
 // app.use("/reviews", reviewsRouter);
 app.use("/qa", qaRouter);
 
-app.get("/loaderio", (req, res) => {
-  res.send("loaderio");
+app.get(`/${process.env.LOADERIO_KEY}`, (req, res) => {
+  res.send(`${process.env.LOADERIO_KEY}`);
 });
 
 // added port into .env
