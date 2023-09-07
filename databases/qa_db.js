@@ -1,5 +1,5 @@
 const {Client} = require ('pg');
-import { Pool } from 'postgres-pool';
+const { Pool } = require('postgres-pool');
 require('dotenv').config();
 
 const client = new Pool({
